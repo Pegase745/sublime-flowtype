@@ -2,7 +2,17 @@
   FlowType default settings.
 */
 {
+	// Print useful debug messages in console.
+	// TODO: disable before publishing
+	"debug": true,
+
 	// Determines whether FlowType autocompletes types as you write
 	// Set false to disable autocomplete popups
-	"show_type_completion": true
+	"show_type_completion": true,
+
+	// Determines flow binary path
+	"flow_bin_path": "/usr/local/bin/flow",
+
+	// Show Flow binary version in status bar
+	"show_flow_bin_version": true
 }
