@@ -1,0 +1,48 @@
+[
+    {
+        "caption": "Preferences",
+        "children": [
+            {
+                "caption": "Package Settings",
+                "children": [
+                    {
+                        "caption": "FlowType",
+                        "children": [
+                            {
+                                "args": {
+                                    "file": "${packages}/FlowType/CHANGELOG.md"
+                                },
+                                "caption": "CHANGELOG",
+                                "command": "open_file"
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "args": {
+                                    "file": "${packages}/FlowType/FlowType.sublime-settings"
+                                },
+                                "caption": "Settings - Default",
+                                "command": "open_file"
+                            },
+                            {
+                                "args": {
+                                    "file": "${packages}/User/FlowType.sublime-settings"
+                                },
+                                "caption": "Settings - User",
+                                "command": "open_file"
+                            },
+                            {
+                                "caption": "-"
+                            }
+                        ]
+                    }
+                ],
+                "id": "package-settings",
+                "mnemonic": "P"
+            }
+        ],
+        "id": "preferences",
+        "mnemonic": "n"
+    }
+]

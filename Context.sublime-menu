@@ -1,0 +1,19 @@
+[
+    {
+        "caption": "FlowType",
+        "id": "flowtype_context",
+        "children":
+        [
+            {
+                "command": "flowtype_show_type",
+                "id": "flowtype_show_type",
+                "caption": "Show type"
+            },
+            {
+                "command": "flowtype_goto_definition",
+                "id": "flowtype_goto_definition",
+                "caption": "Goto definition"
+            }
+        ]
+    }
+]

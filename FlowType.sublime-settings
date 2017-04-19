@@ -1,0 +1,8 @@
+/*
+  FlowType default settings.
+*/
+{
+	// Determines whether FlowType autocompletes types as you write
+	// Set false to disable autocomplete popups
+	"show_type_completion": true
+}
