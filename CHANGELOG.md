@@ -3,10 +3,11 @@
 All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
-## [1.0.0] - 2017-XX-XX
+## [1.0.0-alpha] - 2017-05-06
 ### Added
-  * Release FlowType on [Package Control].
+  * Auto-complete built-in types available in Flow 0.44.0.
+  * Add an `Check contents` command checking the contents of a JS file, listing the errors and highlighting corresponding regions.
+  * Add an `Add pragma` command inserting the pragma on the first row of a JS file.
+  * Add tests raising coverage to 99%.
 
-[Package Control]: https://packagecontrol.io/packages/FlowType
-
-[1.0.0]: https://github.com/Pegase745/sublime-flowtype/compare/1.0.0
+[1.0.0-alpha]: https://github.com/Pegase745/sublime-flowtype/compare/1.0.0-alpha

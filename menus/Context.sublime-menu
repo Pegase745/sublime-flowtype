@@ -10,9 +10,9 @@
                 "caption": "Add pragma"
             },
             {
-                "command": "flowtype_run_type_checker",
-                "id": "flowtype_run_type_checker",
-                "caption": "Run type checker"
+                "command": "flowtype_check_contents",
+                "id": "flowtype_check_contents",
+                "caption": "Check contents"
             }
         ]
     }
