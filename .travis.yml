@@ -14,6 +14,7 @@ before_install:
 
 install:
   - sh travis.sh bootstrap
+  - pip install --upgrade pip
   - pip install -r requirements-dev.txt
 
 script:
