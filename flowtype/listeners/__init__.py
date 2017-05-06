@@ -24,5 +24,5 @@ class FlowTypeListener(sublime_plugin.EventListener):
             line = sublime.Region(
                 view.line(trigger_start).begin(), trigger_start)
             if view.substr(line).strip().endswith(':'):
-                # TODO: only built-int starting with prefix
+                # TODO: only built-in starting with prefix
                 return builtintypes

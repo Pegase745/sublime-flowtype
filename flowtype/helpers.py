@@ -47,7 +47,6 @@ def get_flow_bin():
 def prepare_arguments(view):
     """Prepare arguments to be sent to the Flow binary."""
     file_name = view.file_name()
-    # TODO: rename into selection instead
     cursor_position = view.sel()[0].begin()
     row, col = view.rowcol(cursor_position)
     contents = view.substr(sublime.Region(0, view.size()))

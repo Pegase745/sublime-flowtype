@@ -14,10 +14,11 @@ before_install:
 
 install:
   - sh travis.sh bootstrap
+  - pip install -r requirements-dev.txt
 
 script:
   - sh travis.sh run_tests --coverage
-  # - make check
+  - make check
 
 after_success:
   - travis_retry pip install codecov

@@ -1,6 +1,7 @@
 import sublime
-from ..logger import Logger
+
 from .base import BaseCommand
+from ..logger import Logger
 from ..helpers import get_flow_bin, prepare_arguments, run_flow
 
 logger = Logger()
