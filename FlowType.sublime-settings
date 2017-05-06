@@ -1,18 +1,16 @@
 /*
   FlowType default settings.
+
+  Copy the soon to be custom settings to 'User/FlowType.sublime-settings',
+  otherwise it will be reset on every plugin update.
 */
 {
-	// Print useful debug messages in console.
-	// TODO: disable before publishing
-	"debug": true,
+	// Set logging level
+	"log_level": "debug",
 
-	// Determines whether FlowType autocompletes types as you write
-	// Set false to disable autocomplete popups
-	"show_type_completion": true,
-
-	// Determines flow binary path
+	// Path to flow binary
 	"flow_bin_path": "/usr/local/bin/flow",
 
-	// Show Flow binary version in status bar
-	"show_flow_bin_version": true
+	// Disable completions of Flow types
+	"disable_completions": false
 }

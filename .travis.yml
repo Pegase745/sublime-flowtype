@@ -1,0 +1,29 @@
+dist: trusty
+
+sudo: false
+
+os:
+  - linux
+  # - osx
+
+env:
+  - PACKAGE="FlowType" SUBLIME_TEXT_VERSION="3"
+
+before_install:
+  - curl -OL https://raw.githubusercontent.com/randy3k/UnitTesting/master/sbin/travis.sh
+
+install:
+  - sh travis.sh bootstrap
+
+script:
+  - sh travis.sh run_tests --coverage
+  # - make check
+
+after_success:
+  - travis_retry pip install codecov
+  - codecov
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

@@ -1,11 +1,10 @@
-"""This plugin for Sublime Text is an attempt in making a great Flow IDE."""
+import sublime
 
-import sys
+from .flowtype.commands import *  # noqa
+from .flowtype.listeners import *  # noqa
 
 
-if sys.version_info < (3, 0):
-    from commands import *  # noqa
-    from listener import *  # noqa
-else:
-    from .commands import *  # noqa
-    from .listener import *  # noqa
+def plugin_loaded():
+    """Raise an error if Sublime Text < 3."""
+    if int(sublime.version()) < 3000:
+        raise RuntimeError('FlowType plugin works with Sublime Text 3 only.')

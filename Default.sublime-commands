@@ -2,5 +2,9 @@
     {
         "caption": "FlowType: Add Pragma",
         "command": "flowtype_add_pragma"
+    },
+    {
+        "caption": "FlowType: Check Contents",
+        "command": "flowtype_check_contents"
     }
 ]
