@@ -74,7 +74,7 @@ def run_flow(command, contents):
 
         decoded_output = output.decode('utf-8')
 
-        clean_output = decoded_output[decoded_output.find('{\"flowVersion'):]
+        clean_output = decoded_output[decoded_output.find('{\"'):]
 
         result = json.loads(clean_output)
 
