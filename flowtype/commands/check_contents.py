@@ -2,9 +2,11 @@ import sublime
 
 from .base import BaseCommand
 from ..logger import Logger
+from ..spinner import Spinner
 from ..helpers import get_flow_bin, prepare_arguments, run_flow
 
 logger = Logger()
+spinner = Spinner()
 
 
 class FlowtypeCheckContents(BaseCommand):
@@ -12,6 +14,8 @@ class FlowtypeCheckContents(BaseCommand):
 
     def run(self, edit):
         """Run command."""
+        spinner.start()
+
         description_by_row = {}
 
         logger.logger.debug('Running check_contents')
@@ -19,6 +23,7 @@ class FlowtypeCheckContents(BaseCommand):
         try:
             flow_bin = get_flow_bin()
         except ValueError as e:
+            spinner.stop()
             logger.logger.error('check_contents %s' % e)
             return
 
@@ -33,6 +38,7 @@ class FlowtypeCheckContents(BaseCommand):
                 '--json', arguments.file_name
             ], arguments.contents)
         except Exception as e:
+            spinner.stop()
             logger.logger.error('check_contents %s' % e)
             return
 
@@ -45,6 +51,7 @@ class FlowtypeCheckContents(BaseCommand):
 
             # No errors
             if passed:
+                spinner.stop()
                 self.view.erase_status('flow_type')
                 self.view.set_status(
                     'flow_type', 'Flow %s: no errors' % flow_version)
@@ -82,6 +89,8 @@ class FlowtypeCheckContents(BaseCommand):
                 regions, 'string', 'dot',
                 sublime.DRAW_SOLID_UNDERLINE
             )
+
+            spinner.stop()
 
             self.view.erase_status('flow_type')
             self.view.set_status(
