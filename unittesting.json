@@ -1,4 +1,6 @@
 
 {
-	"verbosity": 0
+	"verbosity": 0,
+	"async": true,
+    "deferred": false
 }

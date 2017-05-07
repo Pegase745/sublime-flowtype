@@ -13,6 +13,10 @@ class FlowtypeCheckContents(BaseCommand):
     """Run Flow check-contents."""
 
     def run(self, edit):
+        """Run command with async timeout."""
+        sublime.set_timeout_async(self.run_async)
+
+    def run_async(self):
         """Run command."""
         spinner.start()
 

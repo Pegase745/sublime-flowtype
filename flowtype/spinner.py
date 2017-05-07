@@ -35,7 +35,6 @@ class Spinner(object):
                 'flow_type',
                 'Flow is running [%s]' % next(self.spinner_generator))
             time.sleep(self.delay)
-            active_view.set_status('flow_type', '\b')
 
     def start(self):
         """Start spinning in a thread."""

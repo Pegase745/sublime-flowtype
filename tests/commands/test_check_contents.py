@@ -1,4 +1,5 @@
 import json
+import time
 from unittest.mock import patch
 
 import sublime
@@ -25,7 +26,9 @@ class TestCheckContents(TestCase):
         Ut sit amet gravida nibh."""
 
         self.setText(string)
-        self.view.run_command("flowtype_check_contents")
+        sublime.set_timeout_async(
+            lambda: self.view.run_command("flowtype_check_contents"), 100)
+        time.sleep(1)
 
         actual = self.view.get_status('flow_type')
         expected = "Flow 0.45.0: no errors"
@@ -91,7 +94,9 @@ class TestCheckContents(TestCase):
         Ut sit amet gravida nibh."""
 
         self.setText(string)
-        self.view.run_command("flowtype_check_contents")
+        sublime.set_timeout_async(
+            lambda: self.view.run_command("flowtype_check_contents"), 100)
+        time.sleep(1)
 
         actual = self.view.get_status('flow_type')
         expected = "Flow 0.45.0: 1 error(s) -> {2: 'identifier `gravida`" + \
@@ -113,7 +118,9 @@ class TestCheckContents(TestCase):
         Ut sit amet gravida nibh."""
 
         self.setText(string)
-        self.view.run_command("flowtype_check_contents")
+        sublime.set_timeout_async(
+            lambda: self.view.run_command("flowtype_check_contents"), 100)
+        time.sleep(1)
 
         actual = self.view.get_status('flow_type')
         expected = ""  # nothing happens, only logger.error
