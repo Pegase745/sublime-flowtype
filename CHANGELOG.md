@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
+## Unreleased
+### Fixed
+  * Fix `check_contents` result not showing on Flow server initialization.
+
 ## [1.0.0-alpha] - 2017-05-06
 ### Added
   * Auto-complete built-in types available in Flow 0.44.0.

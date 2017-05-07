@@ -11,13 +11,16 @@ class TestRunFlow(unittest.TestCase):
 
     @patch(
         'subprocess.check_output',
-        return_value=bytes(json.dumps({"dumb": False}), encoding='utf-8')
+        return_value=bytes(json.dumps(
+            {"errors": [], "passed": True, "flowVersion": "0.45.0"}),
+            encoding='utf-8')
     )
     def test_valid_command(self, *_):
         """Return result after running a valid command."""
         result = run_flow(['dumb', 'command'], 'fake contents')
 
-        self.assertEqual(result, {"dumb": False})
+        self.assertEqual(
+            result, {"errors": [], "passed": True, "flowVersion": "0.45.0"})
 
     @patch(
         'subprocess.check_output',

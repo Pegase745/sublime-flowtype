@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import subprocess
 from collections import namedtuple
@@ -71,7 +72,11 @@ def run_flow(command, contents):
             command, stderr=subprocess.STDOUT, stdin=read
         )
 
-        result = json.loads(output.decode('utf-8'))
+        decoded_output = output.decode('utf-8')
+
+        clean_output = decoded_output[decoded_output.find('{\"flowVersion'):]
+
+        result = json.loads(clean_output)
 
         os.close(read)
         return result
