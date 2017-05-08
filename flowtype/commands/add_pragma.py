@@ -1,11 +1,17 @@
+import sublime_plugin
+
 from ..logger import Logger
-from .base import BaseCommand
+from ..helpers import is_js_source
 
 logger = Logger()
 
 
-class FlowtypeAddPragma(BaseCommand):
+class FlowtypeAddPragma(sublime_plugin.TextCommand):
     """Add Flow pragma in the beginning of the file."""
+
+    def is_enabled(self):
+        """Enable the command only on Javascript files."""
+        return is_js_source(self.view)
 
     def run(self, edit):
         """Run command."""

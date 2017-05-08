@@ -5,10 +5,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 ### Added
-  * Add a spinner singleton to show a loading process in status bar.
+  * Add a spinner in status bar for threaded processes.
 
 ### Fixed
-  * Run `check_contents` in an async mode in order to not freeze UI on flow command run.
+  * Run `check_contents` in a thread in order to not freeze UI.
   * Fix `check_contents` result not showing on Flow server initialization.
 
 ## [1.0.0-alpha] - 2017-05-06

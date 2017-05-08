@@ -6,7 +6,7 @@ from collections import namedtuple
 import sublime
 
 Arguments = namedtuple('Arguments', [
-    'file_name', 'cursor_position', 'row', 'col', 'contents'
+    'file_name', 'cursor_position', 'row', 'col'
 ])
 
 
@@ -49,14 +49,12 @@ def prepare_arguments(view):
     file_name = view.file_name()
     cursor_position = view.sel()[0].begin()
     row, col = view.rowcol(cursor_position)
-    contents = view.substr(sublime.Region(0, view.size()))
 
     return Arguments(
         file_name=file_name,
         cursor_position=cursor_position,
         row=row,
-        col=col,
-        contents=contents
+        col=col
     )
 
 
