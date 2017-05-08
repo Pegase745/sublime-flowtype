@@ -1,24 +1,20 @@
-import abc
-
 import sublime
 import sublime_plugin
 
 from ..helpers import is_js_source
 
 
-class BaseCommand(sublime_plugin.TextCommand, metaclass=abc.ABCMeta):
+class BaseCommand(sublime_plugin.TextCommand):
     """Common properties and methods for children commands."""
 
     def get_content(self):
         """Return file content."""
         return self.view.substr(sublime.Region(0, self.view.size()))
 
-    @abc.abstractmethod
     def get_cmd(self):
         """Construct cli command."""
         raise NotImplementedError('get_cmd method must be defined')
 
-    @abc.abstractmethod
     def handle_process(self, returncode, stdout, error):
         """Handle the output from the threaded process."""
         raise NotImplementedError('handle_process method must be defined')
