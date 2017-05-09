@@ -44,3 +44,8 @@ class BaseCommand(sublime_plugin.TextCommand):
     def is_enabled(self):
         """Enable the command only on Javascript files."""
         return is_js_source(self.view)
+
+    @property
+    def active_window(self):
+        """Return active window."""
+        return sublime.active_window()

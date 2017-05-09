@@ -38,8 +38,6 @@ class FlowtypeCheckContents(BaseCommand):
             logger.logger.error('check_contents %s' % error)
             return
 
-        description_by_row = {}
-
         passed = stdout.get('passed', False)
         errors = stdout.get('errors', [])
         flow_version = stdout.get('flowVersion', '')
@@ -53,9 +51,10 @@ class FlowtypeCheckContents(BaseCommand):
 
         # Errors
         regions = []
+        self.points = []
+        options = []
         for error in errors:
-            rows = []
-            description = ''
+            description = []
 
             operation = error.get('message')[0]
             comment = error.get('message')[1]
@@ -67,16 +66,14 @@ class FlowtypeCheckContents(BaseCommand):
                 start = self.view.text_point(row, col)
                 stop = self.view.text_point(row, endcol)
 
-                regions.append(sublime.Region(start, stop))
-                rows.append(row)
-            description = '{} {}'.format(
-                operation['descr'], comment['descr'])
-            for row in rows:
-                row_description = description_by_row.get(row)
-                if not row_description:
-                    description_by_row[row + 1] = description
+                # Keep track to link from quick panel
+                self.points.append(stop)
 
-        logger.logger.debug(description_by_row)
+                regions.append(sublime.Region(start, stop))
+            description.append('{} {}'.format(
+                row + 1, operation['descr']))
+            description.append(comment['descr'])
+            options.append(description)
 
         self.view.add_regions(
             'flow_type_highlights',
@@ -86,10 +83,37 @@ class FlowtypeCheckContents(BaseCommand):
 
         self.view.erase_status('flow_type')
         self.view.set_status(
-            'flow_type', 'Flow %s: %s error(s) -> %s' %
-            (flow_version, len(errors), description_by_row))
+            'flow_type', 'Flow {}: {} error{}'.format(
+                flow_version, len(errors), 's' if len(errors) > 1 else ''))
 
-    def run(self, edit):
+        self.viewport_pos = self.view.viewport_position()
+        self.selection = list(self.view.sel())
+
+        self.active_window.show_quick_panel(
+            options,
+            on_select=self.select_error,
+            on_highlight=self.select_error
+        )
+
+    def select_error(self, index):
+        """On select handler for the quick panel."""
+        if index != -1:
+            point = self.points[index]
+            self.select_lint_region(sublime.Region(point, point))
+        else:
+            self.view.set_viewport_position(self.viewport_pos)
+            self.view.sel().clear()
+            self.view.sel().add_all(self.selection)
+
+    def select_lint_region(self, region):
+        """Select and scroll to the first marked given region."""
+        sel = self.view.sel()
+        sel.clear()
+        sel.add(region)
+
+        self.view.show_at_center(region)
+
+    def run(self, view):
         """Execute `check_contents` command."""
         logger.logger.debug('Running check_contents')
 

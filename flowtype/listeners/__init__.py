@@ -26,3 +26,8 @@ class FlowTypeListener(sublime_plugin.EventListener):
             if view.substr(line).strip().endswith(':'):
                 # TODO: only built-in starting with prefix
                 return builtintypes
+
+    def on_selection_modified(self, view):
+        """Erase highlighted regions and status when modifying selection."""
+        view.erase_regions('flow_type_highlights')
+        view.erase_status('flow_type')

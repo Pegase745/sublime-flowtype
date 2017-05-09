@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
   * Add `ctrl+alt+c` as a keybinding for `check_contents`.
 
+### Changed
+  * Show the errors in a quick panel instead of status bar.
+
 ## [v1.0.0-alpha.1] - 2017-05-08
 ### Added
   * Add a spinner in status bar for threaded processes.
