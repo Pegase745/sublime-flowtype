@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
 ## [Unreleased]
+
+## [v1.0.0-alpha.2] - 2017-05-09
 ### Added
   * Add `ctrl+alt+c` as a keybinding for `check_contents`.
 
@@ -25,6 +27,7 @@ All notable changes to this project will be documented in this file.
   * Add an `Add pragma` command inserting the pragma on the first row of a JS file.
   * Add tests raising coverage to 99%.
 
-[Unreleased]: https://github.com/Pegase745/sublime-flowtype/compare/v1.0.0-alpha.1...master
+[Unreleased]: https://github.com/Pegase745/sublime-flowtype/compare/v1.0.0-alpha.2...master
+[v1.0.0-alpha.2]: https://github.com/Pegase745/sublime-flowtype/compare/v1.0.0-alpha.1...v1.0.0-alpha.2
 [v1.0.0-alpha.1]: https://github.com/Pegase745/sublime-flowtype/compare/v1.0.0-alpha...v1.0.0-alpha.1
 [v1.0.0-alpha]: https://github.com/Pegase745/sublime-flowtype/compare/v1.0.0-alpha
