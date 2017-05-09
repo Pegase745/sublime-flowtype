@@ -52,12 +52,13 @@ class FlowtypeCheckContents(BaseCommand):
         # Errors
         regions = []
         self.points = []
-        options = []
+        panel_errors = []
         for error in errors:
-            description = []
+            legend = []
+            full_description = []
+            messages = error.get('message', [])
+            operation = messages[0]
 
-            operation = error.get('message')[0]
-            comment = error.get('message')[1]
             if operation:
                 row = int(operation['line']) - 1
                 col = int(operation['start']) - 1
@@ -70,15 +71,20 @@ class FlowtypeCheckContents(BaseCommand):
                 self.points.append(stop)
 
                 regions.append(sublime.Region(start, stop))
-            description.append('{} {}'.format(
-                row + 1, operation['descr']))
-            description.append(comment['descr'])
-            options.append(description)
+
+            for message in messages:
+                legend.append(message['descr'])
+
+            full_description.append('{} {}'.format(
+                row + 1, operation['context']))
+            full_description.append(' '.join(legend))
+
+            panel_errors.append(full_description)
 
         self.view.add_regions(
             'flow_type_highlights',
             regions, 'string', 'dot',
-            sublime.DRAW_SOLID_UNDERLINE
+            sublime.DRAW_NO_FILL
         )
 
         self.view.erase_status('flow_type')
@@ -90,7 +96,7 @@ class FlowtypeCheckContents(BaseCommand):
         self.selection = list(self.view.sel())
 
         self.active_window.show_quick_panel(
-            options,
+            panel_errors,
             on_select=self.select_error,
             on_highlight=self.select_error
         )

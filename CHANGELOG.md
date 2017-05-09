@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
   * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
 
+### Fixed
+  * Show error context and full description in quick panel.
+
 ## [v1.0.0-alpha.2] - 2017-05-09
 ### Added
   * Add `ctrl+alt+c` as a keybinding for `check_contents`.
