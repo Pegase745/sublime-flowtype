@@ -13,6 +13,11 @@
                 "command": "flowtype_check_contents",
                 "id": "flowtype_check_contents",
                 "caption": "Check contents"
+            },
+            {
+                "command": "flowtype_goto_definition",
+                "id": "flowtype_goto_definition",
+                "caption": "Goto definition"
             }
         ]
     }

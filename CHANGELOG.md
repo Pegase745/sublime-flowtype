@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
 ## [Unreleased]
+### Added
+  * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
 
 ## [v1.0.0-alpha.2] - 2017-05-09
 ### Added

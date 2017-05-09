@@ -1,11 +1,20 @@
 import sublime
 import sublime_plugin
 
-from ..helpers import is_js_source
+from ..helpers import is_js_source, find_in_parent_folders
 
 
 class BaseCommand(sublime_plugin.TextCommand):
     """Common properties and methods for children commands."""
+
+    def get_project_root(self):
+        """Return the project root.
+
+        Search for a .flowconfig file and consider its location as the
+        project's root.
+        """
+        file_path = self.active_window.extract_variables()['file_path']
+        return find_in_parent_folders('.flowconfig', file_path)
 
     def get_content(self):
         """Return file content."""

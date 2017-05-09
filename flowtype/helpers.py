@@ -24,7 +24,9 @@ def singleton(cls):
 def is_js_source(view):
     """Check if it's a Javascript file."""
     scope_name = view.scope_name(0).split()
-    return 'source.js' in scope_name
+    file_extension = os.path.splitext(view.file_name())[1:][0]
+
+    return 'source.js' in scope_name or file_extension in ('.js', '.flow')
 
 
 def get_settings(setting, default=None):
@@ -79,3 +81,27 @@ def run_flow(command, contents):
         return result
     except subprocess.CalledProcessError as err:
         raise err
+
+
+def find_in_parent_folders(file_name, current_dir):
+    """Search for a given filename.
+
+    Starting from a given path and in parent paths until file is found.
+    """
+    file_path = ""
+
+    while True:
+        file_list = os.listdir(current_dir)
+        parent_dir = os.path.dirname(current_dir)
+        if file_name in file_list:
+            file_path = "%s/%s" % (current_dir, file_name)
+            break
+        else:
+            if current_dir == parent_dir:
+                raise ValueError(
+                    "No %s was found in any parent folder" % file_name)
+                break
+            else:
+                current_dir = parent_dir
+
+    return file_path

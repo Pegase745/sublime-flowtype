@@ -6,5 +6,9 @@
     {
         "caption": "FlowType: Check Contents",
         "command": "flowtype_check_contents"
+    },
+    {
+        "caption": "FlowType: Goto Definition",
+        "command": "flowtype_goto_definition"
     }
 ]
