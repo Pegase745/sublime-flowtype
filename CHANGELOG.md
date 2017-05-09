@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
 ## [Unreleased]
+### Added
+  * Add `ctrl+alt+c` as a keybinding for `check_contents`.
 
 ## [v1.0.0-alpha.1] - 2017-05-08
 ### Added
