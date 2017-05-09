@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Added
   * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
+  * Add `view_type` command binded to `ctrl+right-mouse-click`.
 
 ### Fixed
   * Show error context and full description in quick panel.

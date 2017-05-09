@@ -10,5 +10,9 @@
     {
         "caption": "FlowType: Goto Definition",
         "command": "flowtype_goto_definition"
+    },
+    {
+        "caption": "FlowType: View Type",
+        "command": "flowtype_view_type"
     }
 ]

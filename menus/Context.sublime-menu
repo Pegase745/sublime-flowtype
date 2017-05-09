@@ -18,6 +18,11 @@
                 "command": "flowtype_goto_definition",
                 "id": "flowtype_goto_definition",
                 "caption": "Goto definition"
+            },
+            {
+                "command": "flowtype_view_type",
+                "id": "flowtype_view_type",
+                "caption": "View type"
             }
         ]
     }
