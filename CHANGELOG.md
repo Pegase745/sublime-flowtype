@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
 ## [Unreleased]
+
+## [v1.0.0-alpha.3] - 2017-05-10
 ### Added
   * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
   * Add `view_type` command binded to `ctrl+right-mouse-click`.
