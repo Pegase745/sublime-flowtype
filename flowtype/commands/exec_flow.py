@@ -41,7 +41,7 @@ class ExecFlowCommand(threading.Thread):
 
             try:
                 self.stdout = json.loads(output)
-            except ValueError as e:
+            except ValueError:
                 self.stdout = output
 
             os.close(read)

@@ -44,7 +44,7 @@ class FlowtypeCoverage(BaseCommand):
             uncovered = expressions['uncovered_count']
             total = covered + uncovered
             percentage = (covered * 100.0) / total
-            print(percentage)
+
             self.view.set_status(
                 'flow_type',
                 'Flow: {}% coverage with {}/{} uncovered lines'
