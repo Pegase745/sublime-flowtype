@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
   * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
   * Add `view_type` command binded to `ctrl+right-mouse-click`.
+  * Add `coverage` command showing percentage of uncovered lines in status bar.
 
 ### Fixed
   * Show error context and full description in quick panel.

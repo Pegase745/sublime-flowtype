@@ -14,5 +14,9 @@
     {
         "caption": "FlowType: View Type",
         "command": "flowtype_view_type"
+    },
+    {
+        "caption": "FlowType: Show Coverage",
+        "command": "flowtype_show_coverage"
     }
 ]

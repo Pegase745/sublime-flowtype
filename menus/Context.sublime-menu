@@ -23,6 +23,11 @@
                 "command": "flowtype_view_type",
                 "id": "flowtype_view_type",
                 "caption": "View type"
+            },
+            {
+                "command": "flowtype_coverage",
+                "id": "flowtype_coverage",
+                "caption": "Show coverage"
             }
         ]
     }
