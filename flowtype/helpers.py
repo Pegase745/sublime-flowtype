@@ -123,7 +123,7 @@ def apply_patch(s, patch, revert=False):
     s = s.splitlines(True)
     p = patch.splitlines(True)
     t = ''
-    i = sl = 1 # start at line 2
+    i = sl = 1 # start at line 2 # noqa
     (midx, sign) = (1, '+') if not revert else (3, '-')
     while i < len(p) and p[i].startswith(("---", "+++")):
         i += 1  # skip header lines
@@ -132,7 +132,7 @@ def apply_patch(s, patch, revert=False):
         if not m:
             raise Exception("Cannot process diff")
         i += 1
-        l = int(m.group(midx)) - 1 + (m.group(midx + 1) == '0')
+        l = int(m.group(midx)) - 1 + (m.group(midx + 1) == '0')  # noqa
         t += ''.join(s[sl:l])
         sl = l
         while i < len(p) and p[i][0] != '@':

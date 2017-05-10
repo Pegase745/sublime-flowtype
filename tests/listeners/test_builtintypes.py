@@ -10,7 +10,7 @@ class TestBuiltInTypes(unittest.TestCase):
         """Return an tuple where trigger text is same than context."""
         trigger = "boolean"
         description = "Flow boolean type"
-        expected = ("boolean\tFlow boolean type", "boolean,")
+        expected = ("boolean\tFlow boolean type", "boolean")
         actual = print_type_format(trigger, description=description)
 
         self.assertEqual(actual, expected)
@@ -20,7 +20,7 @@ class TestBuiltInTypes(unittest.TestCase):
         trigger = "boolean"
         content = "\$SpecialBoolean"
         description = "Flow boolean type"
-        expected = ("boolean\tFlow boolean type", "\$SpecialBoolean,")
+        expected = ("boolean\tFlow boolean type", "\$SpecialBoolean")
         actual = print_type_format(trigger, content, description)
 
         self.assertEqual(actual, expected)
