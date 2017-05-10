@@ -3,7 +3,7 @@ import sublime
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments
+from ..helpers import get_flow_bin, prepare_arguments, get_settings
 
 logger = Logger()
 
@@ -95,11 +95,12 @@ class FlowtypeCheckContents(BaseCommand):
         self.viewport_pos = self.view.viewport_position()
         self.selection = list(self.view.sel())
 
-        self.active_window.show_quick_panel(
-            panel_errors,
-            on_select=self.select_error,
-            on_highlight=self.select_error
-        )
+        if (not get_settings('check_contents_on_edit', True)):
+            self.active_window.show_quick_panel(
+                panel_errors,
+                on_select=self.select_error,
+                on_highlight=self.select_error
+            )
 
     def select_error(self, index):
         """On select handler for the quick panel."""

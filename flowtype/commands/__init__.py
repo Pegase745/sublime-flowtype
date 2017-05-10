@@ -3,6 +3,7 @@ from .check_contents import FlowtypeCheckContents
 from .goto_definition import FlowtypeGotoDefinition
 from .view_type import FlowtypeViewType
 from .coverage import FlowtypeCoverage
+from .autocomplete import FlowtypeAutocomplete
 
 __all__ = [
     'FlowtypeAddPragma',
@@ -10,4 +11,5 @@ __all__ = [
     'FlowtypeGotoDefinition',
     'FlowtypeViewType',
     'FlowtypeCoverage',
+    'FlowtypeAutocomplete',
 ]

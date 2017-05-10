@@ -3,5 +3,10 @@
         "command": "flowtype_check_contents", "keys": ["ctrl+alt+c"], "context": [
             {"key": "selector", "operator": "equal", "operand": "source.js"}
         ]
+    },
+    {
+        "command": "flowtype_autocomplete", "keys": ["ctrl+alt+space"], "context": [
+            {"key": "selector", "operator": "equal", "operand": "source.js"}
+        ]
     }
 ]

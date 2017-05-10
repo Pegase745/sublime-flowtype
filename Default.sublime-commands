@@ -17,6 +17,10 @@
     },
     {
         "caption": "FlowType: Show Coverage",
-        "command": "flowtype_show_coverage"
+        "command": "flowtype_coverage"
+    },
+    {
+        "caption": "FlowType: Show Autocomplete Suggestions",
+        "command": "flowtype_autocomplete"
     }
 ]

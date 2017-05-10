@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
   * Add `goto_definition` command binded to `ctrl+left-mouse-click`.
   * Add `view_type` command binded to `ctrl+right-mouse-click`.
   * Add `coverage` command showing percentage of uncovered lines in status bar.
+  * Add `autocomplete` command showing Flow suggestions on `ctrl+alt+space`, and is also activate by default on file edit.
+
+### Changed
+  * Activate check contents by default on file save, without showing the quick panel.
 
 ### Fixed
   * Show error context and full description in quick panel.

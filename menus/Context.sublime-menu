@@ -28,6 +28,11 @@
                 "command": "flowtype_coverage",
                 "id": "flowtype_coverage",
                 "caption": "Show coverage"
+            },
+            {
+                "command": "flowtype_autocomplete",
+                "id": "flowtype_autocomplete",
+                "caption": "Show autocomplete suggestions"
             }
         ]
     }

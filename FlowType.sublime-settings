@@ -11,6 +11,15 @@
 	// Path to flow binary
 	"flow_bin_path": "/usr/local/bin/flow",
 
-	// Disable completions of Flow types
-	"disable_completions": false
+	// Disable completions of Flow built-in types
+	"complete_with_builtintypes": true,
+
+	// Show autocomplete suggestions on edit
+	"suggest_autocomplete_on_edit": true,
+
+	// Check contents for Flow errors on edit
+	"check_contents_on_edit": false,
+
+	// Check contents for Flow errors on save
+	"check_contents_on_save": true
 }
