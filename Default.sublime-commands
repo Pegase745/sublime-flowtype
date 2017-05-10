@@ -22,5 +22,9 @@
     {
         "caption": "FlowType: Show Autocomplete Suggestions",
         "command": "flowtype_autocomplete"
+    },
+    {
+        "caption": "FlowType: Suggest Type Annotations",
+        "command": "flowtype_suggest_annotations"
     }
 ]

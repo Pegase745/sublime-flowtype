@@ -39,7 +39,11 @@ class ExecFlowCommand(threading.Thread):
             if type(output) is bytes:
                 output = output.decode('utf-8')
 
-            self.stdout = json.loads(output)
+            try:
+                self.stdout = json.loads(output)
+            except ValueError as e:
+                self.stdout = output
+
             os.close(read)
         except subprocess.CalledProcessError as err:
             self.stderr = str(err)

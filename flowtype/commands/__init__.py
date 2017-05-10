@@ -4,6 +4,7 @@ from .goto_definition import FlowtypeGotoDefinition
 from .view_type import FlowtypeViewType
 from .coverage import FlowtypeCoverage
 from .autocomplete import FlowtypeAutocomplete
+from .suggest_annotations import FlowtypeSuggestAnnotations
 
 __all__ = [
     'FlowtypeAddPragma',
@@ -12,4 +13,5 @@ __all__ = [
     'FlowtypeViewType',
     'FlowtypeCoverage',
     'FlowtypeAutocomplete',
+    'FlowtypeSuggestAnnotations',
 ]

@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
   * Add `view_type` command binded to `ctrl+right-mouse-click`.
   * Add `coverage` command showing percentage of uncovered lines in status bar.
   * Add `autocomplete` command showing Flow suggestions on `ctrl+alt+space`, and is also activate by default on file edit.
+  * Add `suggest_annotations` applying suggested type annotations to file.
 
 ### Changed
   * Activate check contents by default on file save, without showing the quick panel.

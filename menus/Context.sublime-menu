@@ -33,6 +33,11 @@
                 "command": "flowtype_autocomplete",
                 "id": "flowtype_autocomplete",
                 "caption": "Show autocomplete suggestions"
+            },
+            {
+                "command": "flowtype_suggest_annotations",
+                "id": "flowtype_suggest_annotations",
+                "caption": "Suggest type annotations"
             }
         ]
     }

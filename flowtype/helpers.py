@@ -1,3 +1,4 @@
+import re
 import os
 import json
 import subprocess
@@ -24,7 +25,10 @@ def singleton(cls):
 def is_js_source(view):
     """Check if it's a Javascript file."""
     scope_name = view.scope_name(0).split()
-    file_extension = os.path.splitext(view.file_name())[1:][0]
+    try:
+        file_extension = os.path.splitext(view.file_name())[1:][0]
+    except AttributeError as e:
+        file_extension = ''
 
     return 'source.js' in scope_name or file_extension in ('.js', '.flow')
 
@@ -105,3 +109,42 @@ def find_in_parent_folders(file_name, current_dir):
                 current_dir = parent_dir
 
     return file_path
+
+
+_hdr_pat = re.compile("^@@ -(\d+),?(\d+)? \+(\d+),?(\d+)? @@$")
+
+
+def apply_patch(s, patch, revert=False):
+    """Apply unified diff patch to string s to recover newer string.
+
+    If revert is True, treat s as the newer string, recover older string.
+    Readapted from http://stackoverflow.com/a/40967337/2588498
+    """
+    s = s.splitlines(True)
+    p = patch.splitlines(True)
+    t = ''
+    i = sl = 1 # start at line 2
+    (midx, sign) = (1, '+') if not revert else (3, '-')
+    while i < len(p) and p[i].startswith(("---", "+++")):
+        i += 1  # skip header lines
+    while i < len(p):
+        m = _hdr_pat.match(p[i])
+        if not m:
+            raise Exception("Cannot process diff")
+        i += 1
+        l = int(m.group(midx)) - 1 + (m.group(midx + 1) == '0')
+        t += ''.join(s[sl:l])
+        sl = l
+        while i < len(p) and p[i][0] != '@':
+            if i + 1 < len(p) and p[i + 1][0] == '\\':
+                line = p[i][:-1]
+                i += 2
+            else:
+                line = p[i]
+                i += 1
+            if len(line) > 0:
+                if line[0] == sign or line[0] == ' ':
+                    t += line[1:]
+                sl += (line[0] != sign)
+    t += ''.join(s[sl:])
+    return t
