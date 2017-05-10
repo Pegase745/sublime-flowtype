@@ -1,20 +1,21 @@
-import sublime_plugin
-
 from ..logger import Logger
-from ..helpers import is_js_source
+from .base import BaseCommand
 
 logger = Logger()
 
 
-class FlowtypeAddPragma(sublime_plugin.TextCommand):
+class FlowtypeAddPragma(BaseCommand):
     """Add Flow pragma in the beginning of the file."""
-
-    def is_enabled(self):
-        """Enable the command only on Javascript files."""
-        return is_js_source(self.view)
 
     def run(self, edit):
         """Run command."""
-        # TODO: check if pragma is not already there
         logger.logger.debug('Running add_pragma')
-        self.view.insert(edit, 0, "// @flow\n")
+
+        content = self.get_content()
+
+        if ('// @flow' not in content and '/* @flow */' not in content):
+            self.view.insert(edit, 0, "// @flow\n")
+        else:
+            self.view.erase_status('flow_type')
+            self.view.set_status(
+                'flow_type', "Flow: pragma already set")

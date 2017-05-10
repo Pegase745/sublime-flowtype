@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
   * Use `--quiet` option to suppress output about server startup.
   * Don't include commands in coverage until the separation of unit and functional tests.
   * Fix autocomplete trigger and show type as the suggestion's description.
+  * Don't add a pragma if it's already there.
 
 ## [v1.0.0-alpha.2] - 2017-05-09
 ### Added
