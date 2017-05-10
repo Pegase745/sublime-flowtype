@@ -30,7 +30,8 @@ class FlowtypeViewType(BaseCommand):
             '--from', 'nuclide',
             '--root', project_root,
             '--path', arguments.file_name,
-            '--json', str(arguments.row + 1), str(arguments.col + 1)
+            '--quiet', '--json',
+            str(arguments.row + 1), str(arguments.col + 1)
         ]
 
         return cmd

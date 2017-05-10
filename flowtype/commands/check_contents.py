@@ -24,7 +24,7 @@ class FlowtypeCheckContents(BaseCommand):
         cmd = [
             flow_bin, 'check-contents',
             '--from', 'nuclide',
-            '--json', arguments.file_name
+            '--quiet', '--json', arguments.file_name
         ]
 
         return cmd

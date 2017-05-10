@@ -22,7 +22,7 @@ class FlowtypeCoverage(BaseCommand):
         cmd = [
             flow_bin, 'coverage',
             '--from', 'nuclide',
-            '--json', arguments.file_name
+            '--quiet', '--json', arguments.file_name
         ]
 
         return cmd
