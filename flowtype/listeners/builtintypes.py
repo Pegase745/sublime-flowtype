@@ -10,7 +10,7 @@ and
 
 def print_type_format(trigger, content=None, description=None):
     """Format output for autocompletion for a given trigger text."""
-    return ("%s\t%s" % (trigger, description), "%s," % (content or trigger))
+    return ("%s\t%s" % (trigger, description), "%s" % (content or trigger))
 
 
 builtintypes = [

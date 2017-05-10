@@ -45,7 +45,7 @@ class FlowtypeAutocomplete(BaseCommand):
         if len(stdout['result']) > 0:
             for suggestion in stdout['result']:
                 FLOW_SUGGESTIONS.append(print_type_format(
-                    suggestion['name'], description="Flow suggestion"))
+                    suggestion['name'], description=suggestion['type']))
 
             self.view.run_command('auto_complete', {
                 'disable_auto_insert': True,

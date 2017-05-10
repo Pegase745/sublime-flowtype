@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
   * Show error context and full description in quick panel.
   * Use `--quiet` option to suppress output about server startup.
   * Don't include commands in coverage until the separation of unit and functional tests.
+  * Fix autocomplete trigger and show type as the suggestion's description.
 
 ## [v1.0.0-alpha.2] - 2017-05-09
 ### Added
