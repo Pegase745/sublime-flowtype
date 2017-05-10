@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
   * Show error context and full description in quick panel.
+  * Don't include commands in coverage until the separation of unit and functional tests.
 
 ## [v1.0.0-alpha.2] - 2017-05-09
 ### Added

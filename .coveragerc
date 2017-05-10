@@ -1,0 +1,5 @@
+[run]
+omit =
+	# TODO: separate unit tests from functional tests
+	/*/commands/*
+	/*/tests/*
