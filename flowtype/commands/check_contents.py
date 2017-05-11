@@ -31,6 +31,8 @@ class FlowtypeCheckContents(BaseCommand):
 
     def handle_process(self, returncode, stdout, error):
         """Handle the output from the threaded process."""
+        self.view.erase_regions('flow_type_highlights')
+
         if type(error) is bytes:
             error = error.decode('utf-8')
 
@@ -44,7 +46,7 @@ class FlowtypeCheckContents(BaseCommand):
 
         # No errors
         if passed:
-            self.view.erase_status('flow_type')
+            self.view.erase_status('flow_errors')
             self.view.set_status(
                 'flow_type', 'Flow %s: no errors' % flow_version)
             return
@@ -53,6 +55,7 @@ class FlowtypeCheckContents(BaseCommand):
         regions = []
         self.points = []
         panel_errors = []
+        error_per_line = {}
         for error in errors:
             legend = []
             full_description = []
@@ -81,21 +84,33 @@ class FlowtypeCheckContents(BaseCommand):
 
             panel_errors.append(full_description)
 
+            error_per_line[row + 1] = ' '.join(legend)
+
         self.view.add_regions(
             'flow_type_highlights',
             regions, 'string', 'dot',
             sublime.DRAW_NO_FILL
         )
 
-        self.view.erase_status('flow_type')
-        self.view.set_status(
-            'flow_type', 'Flow {}: {} error{}'.format(
-                flow_version, len(errors), 's' if len(errors) > 1 else ''))
+        cursor_position = self.view.sel()[0].begin()
+        row, col = self.view.rowcol(cursor_position)
+
+        error_description = error_per_line.get(row + 1)
+
+        self.view.erase_status('flow_errors')
+        if error_description:
+            self.view.set_status(
+                'flow_type', 'Flow error: {}'.format(error_description))
+        else:
+            self.view.set_status(
+                'flow_errors', 'Flow {}: {} error{}'.format(
+                    flow_version, len(errors), 's' if len(errors) > 1 else ''))
 
         self.viewport_pos = self.view.viewport_position()
         self.selection = list(self.view.sel())
 
-        if (not get_settings('check_contents_on_edit', True)):
+        if (not get_settings('check_contents_on_edit', True)) and (
+                not get_settings('check_contents_on_save', False)):
             self.active_window.show_quick_panel(
                 panel_errors,
                 on_select=self.select_error,
@@ -123,8 +138,6 @@ class FlowtypeCheckContents(BaseCommand):
     def run(self, view):
         """Execute `check_contents` command."""
         logger.logger.debug('Running check_contents')
-
-        self.view.erase_regions('flow_type_highlights')
 
         thread = ExecFlowCommand(
             self.get_cmd(),

@@ -39,7 +39,7 @@ class BaseCommand(sublime_plugin.TextCommand):
         i += dir
 
         self.view.set_status(
-            'flow_type',
+            'flow_loader',
             'FlowType [%s=%s]' % (' ' * before, ' ' * after)
         )
 
@@ -47,7 +47,7 @@ class BaseCommand(sublime_plugin.TextCommand):
             return sublime.set_timeout(lambda: self.check_thread(
                 thread, i, dir), 100)
 
-        self.view.erase_status('flow_type')
+        self.view.erase_status('flow_loader')
         self.handle_process(thread.returncode, thread.stdout, thread.stderr)
 
     def is_enabled(self):

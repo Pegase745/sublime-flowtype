@@ -18,8 +18,8 @@
 	"suggest_autocomplete_on_edit": true,
 
 	// Check contents for Flow errors on edit
-	"check_contents_on_edit": false,
+	"check_contents_on_edit": true,
 
 	// Check contents for Flow errors on save
-	"check_contents_on_save": true
+	"check_contents_on_save": false
 }

@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Fixed
   * Build a snippet when autocompleting a suggested function.
+  * Show flow error when cursor on an errored line.
 
 ## [v1.0.0-alpha.3] - 2017-05-10
 ### Added
