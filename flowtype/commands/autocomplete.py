@@ -8,6 +8,25 @@ from ..listeners import FLOW_SUGGESTIONS
 logger = Logger()
 
 
+def build_content_snippet(suggestion):
+    """Build snippet for function autocompletion."""
+    name = suggestion['name']
+
+    if suggestion['func_details']:
+        paramText = ''
+        params = suggestion['func_details']['params']
+
+        for param in params:
+            if not paramText:
+                paramText += param['name']
+            else:
+                paramText += ', ' + param['name']
+
+        return '{}({})'.format(name, paramText)
+    else:
+        return name
+
+
 class FlowtypeAutocomplete(BaseCommand):
     """Run Flow autocomplete and popup type definition."""
 
@@ -45,7 +64,10 @@ class FlowtypeAutocomplete(BaseCommand):
         if len(stdout['result']) > 0:
             for suggestion in stdout['result']:
                 FLOW_SUGGESTIONS.append(print_type_format(
-                    suggestion['name'], description=suggestion['type']))
+                    suggestion['name'],
+                    build_content_snippet(suggestion),
+                    suggestion['type']
+                ))
 
             self.view.run_command('auto_complete', {
                 'disable_auto_insert': True,
