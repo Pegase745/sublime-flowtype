@@ -3,7 +3,7 @@ import sublime
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments, get_settings
+from ..helpers import get_flow_bin, prepare_arguments
 
 logger = Logger()
 
