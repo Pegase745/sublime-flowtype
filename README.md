@@ -18,6 +18,8 @@
 * Go to file containing the type definition
 * View a variable's type definition
 * Show a file's coverage
+* Show a text spinner every time the flow cli is working
+* Launch cli commands in a thread in order to never block the IDE
 
 ## Installation
 
