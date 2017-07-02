@@ -12,7 +12,7 @@
 Welcome fellow Flow user,
 
 This plugin was made due to the fact that the few existing
-plugins weren't maintained, and as an everyday user I needed
+plugins weren't maintained much, and as an everyday user I needed
 something that simply works.
 
 So let's keep this plugin up to date together!

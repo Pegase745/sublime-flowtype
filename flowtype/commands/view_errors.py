@@ -3,12 +3,12 @@ import sublime
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments
+from ..helpers import get_flow_bin, prepare_arguments, get_settings
 
 logger = Logger()
 
 
-class FlowtypeCheckContents(BaseCommand):
+class FlowtypeViewErrors(BaseCommand):
     """Run Flow check-contents."""
 
     def get_cmd(self):
@@ -54,6 +54,7 @@ class FlowtypeCheckContents(BaseCommand):
         # Errors
         regions = []
         self.points = []
+        panel_errors = []
         error_per_line = {}
         for error in errors:
             legend = []
@@ -81,6 +82,8 @@ class FlowtypeCheckContents(BaseCommand):
                 row + 1, operation['context']))
             full_description.append(' '.join(legend))
 
+            panel_errors.append(full_description)
+
             error_per_line[row + 1] = ' '.join(legend)
 
         self.view.add_regions(
@@ -104,6 +107,30 @@ class FlowtypeCheckContents(BaseCommand):
 
         self.viewport_pos = self.view.viewport_position()
         self.selection = list(self.view.sel())
+
+        self.active_window.show_quick_panel(
+            panel_errors,
+            on_select=self.select_error,
+            on_highlight=self.select_error
+        )
+
+    def select_error(self, index):
+        """On select handler for the quick panel."""
+        if index != -1:
+            point = self.points[index]
+            self.select_lint_region(sublime.Region(point, point))
+        else:
+            self.view.set_viewport_position(self.viewport_pos)
+            self.view.sel().clear()
+            self.view.sel().add_all(self.selection)
+
+    def select_lint_region(self, region):
+        """Select and scroll to the first marked given region."""
+        sel = self.view.sel()
+        sel.clear()
+        sel.add(region)
+
+        self.view.show_at_center(region)
 
     def run(self, view):
         """Execute `check_contents` command."""

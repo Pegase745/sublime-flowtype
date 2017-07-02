@@ -15,7 +15,7 @@ class TestOnQueryCompletions(TestCase):
         listener = FlowTypeListener()
         actual = listener.on_query_completions(self.view, 's', [7])
 
-        self.assertEqual(actual, [])
+        self.assertEqual(actual, None)
 
         self.view.set_syntax_file("Packages/JavaScript/JavaScript.tmLanguage")
 

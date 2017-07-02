@@ -10,9 +10,9 @@
                 "caption": "Add pragma"
             },
             {
-                "command": "flowtype_check_contents",
-                "id": "flowtype_check_contents",
-                "caption": "Check contents"
+                "command": "flowtype_view_errors",
+                "id": "flowtype_view_errors",
+                "caption": "View all errors"
             },
             {
                 "command": "flowtype_goto_definition",

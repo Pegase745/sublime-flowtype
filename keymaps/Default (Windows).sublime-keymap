@@ -1,6 +1,6 @@
 [
     {
-        "command": "flowtype_check_contents", "keys": ["ctrl+alt+c"], "context": [
+        "command": "flowtype_view_errorss", "keys": ["ctrl+alt+c"], "context": [
             {"key": "selector", "operator": "equal", "operand": "source.js"}
         ]
     },
