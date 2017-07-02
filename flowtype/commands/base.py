@@ -51,8 +51,11 @@ class BaseCommand(sublime_plugin.TextCommand):
         self.handle_process(thread.returncode, thread.stdout, thread.stderr)
 
     def is_enabled(self):
-        """Enable the command only on Javascript files."""
-        return is_js_source(self.view)
+        """Enable the command only on Javascript files and has flow pragma."""
+        content = self.get_content()
+        pragma = '// @flow' in content or '/* @flow */' in content
+
+        return is_js_source(self.view) and pragma
 
     @property
     def active_window(self):
