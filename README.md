@@ -87,8 +87,9 @@ The default available mouse bindings
 ## Change Log
 
 All notable changes to this project will be documented on the Github [Releases](https://github.com/Pegase745/sublime-flowtype/releases) page.
+
 *This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog](http://keepachangelog.com/).*
 
 ## License
 
-This package is distributed under the terms of the MIT license. See the [LICENSE] file for more details.
+This package is distributed under the terms of the MIT license. See the [LICENSE](LICENSE) file for more details.
