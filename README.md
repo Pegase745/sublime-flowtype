@@ -72,19 +72,75 @@ The default available key bindings
 
 ### Mouse Bindings
 
-The mouse bindings can be modified in two places:
+It is not advised to specify default mousemaps in order to not create conflicts with other packages.
 
-| Description | File Location |
-| ----------- | ------------- |
-| Default | `Packages/Default/Default (Linux/OSX/Windows).sublime-mousemap` |
-| User | `Packages/User/Default (Linux/OSX/Windows).sublime-mousemap` |
+Therefore, you can add mouse bindings for FlowType like this:
 
-The default available mouse bindings
+* For **Linux**, create a "Default (Linux).sublime-mousemap" in **~/.config/sublime-text-3/Packages/User**
+* For **OSX**, create a "Default (OSX).sublime-mousemap" in **~/Library/Application Support/Sublime Text 3/Packages/User**
+* For **Windows**, create a "Default (Windows).sublime-mousemap" in **%appdata%\Sublime Text 3\Packages\User**
+
+For the following binding examples:
 
 | Description | Linux/Windows | OSX |
 | ----------- | ------------- | --- |
 | Go to definition | `ctrl+left-click` | `super+left-click` |
 | View type | `ctrl+right-click` | `super+right-click` |
+
+You must enter the following conf:
+
+**Linux and Windows**
+```json
+[
+    {
+        "button": "button1",
+        "count": 1,
+        "modifiers": ["ctrl"],
+        "press_command": "drag_select",
+        "command": "flowtype_goto_definition",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.js" }
+        ]
+    },
+    {
+        "button": "button2",
+        "count": 1,
+        "modifiers": ["ctrl"],
+        "press_command": "drag_select",
+        "command": "flowtype_view_type",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.js" }
+        ]
+    }
+]
+```
+
+**OSX**
+```json
+[
+    {
+        "button": "button1",
+        "count": 1,
+        "modifiers": ["super"],
+        "press_command": "drag_select",
+        "command": "flowtype_goto_definition",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.js" }
+        ]
+    },
+    {
+        "button": "button2",
+        "count": 1,
+        "modifiers": ["super"],
+        "press_command": "drag_select",
+        "command": "flowtype_view_type",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.js" }
+        ]
+    }
+]
+```
+
 
 ## Change Log
 
