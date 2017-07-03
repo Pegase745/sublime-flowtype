@@ -53,7 +53,6 @@ class FlowtypeCheckContents(BaseCommand):
 
         # Errors
         regions = []
-        self.points = []
         error_per_line = {}
         for error in errors:
             legend = []
@@ -68,9 +67,6 @@ class FlowtypeCheckContents(BaseCommand):
 
                 start = self.view.text_point(row, col)
                 stop = self.view.text_point(row, endcol)
-
-                # Keep track to link from quick panel
-                self.points.append(stop)
 
                 regions.append(sublime.Region(start, stop))
 
