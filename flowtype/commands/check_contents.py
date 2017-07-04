@@ -47,8 +47,9 @@ class FlowtypeCheckContents(BaseCommand):
         # No errors
         if passed:
             self.view.erase_status('flow_errors')
+            self.view.erase_status('flow_single_error')
             self.view.set_status(
-                'flow_type', 'Flow %s: no errors' % flow_version)
+                'flow_errors', 'Flow %s: no errors' % flow_version)
             return
 
         # Errors
@@ -90,9 +91,11 @@ class FlowtypeCheckContents(BaseCommand):
         error_description = error_per_line.get(row + 1, '')
 
         self.view.erase_status('flow_errors')
+        self.view.erase_status('flow_single_error')
         if error_description:
             self.view.set_status(
-                'flow_type', 'Flow error: {}'.format(error_description))
+                'flow_single_error',
+                'Flow error: {}'.format(error_description))
         else:
             self.view.set_status(
                 'flow_errors', 'Flow {}: {} error{}'.format(
