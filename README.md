@@ -90,6 +90,7 @@ For the following binding examples:
 You must enter the following conf:
 
 **Linux and Windows**
+
 ```json
 [
     {
@@ -116,6 +117,7 @@ You must enter the following conf:
 ```
 
 **OSX**
+
 ```json
 [
     {
@@ -140,7 +142,6 @@ You must enter the following conf:
     }
 ]
 ```
-
 
 ## Change Log
 
