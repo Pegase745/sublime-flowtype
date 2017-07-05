@@ -1,9 +1,10 @@
+import time
 import sublime
 import sublime_plugin
 
 from .builtintypes import builtintypes
 from ..logger import Logger
-from ..helpers import get_settings, is_js_source
+from ..helpers import get_settings, is_js_source, FLOWTYPE
 
 logger = Logger()
 
@@ -41,8 +42,8 @@ class FlowTypeListener(sublime_plugin.EventListener):
                 view.run_command('flowtype_autocomplete')
 
             if (get_settings('check_contents_on_edit', False)):
-                sublime.set_timeout_async(
-                    lambda: view.run_command('flowtype_check_contents'), 5)
+                if time.time() - FLOWTYPE['LAST_ERROR_CHECK'] >= 1:
+                    view.run_command('flowtype_check_contents')
 
     def on_post_save_async(self, view):
         """Erase highlighted regions and status when saving file."""

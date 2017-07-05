@@ -43,7 +43,6 @@ class FlowtypeCoverage(BaseCommand):
         logger.logger.debug(stdout)
 
         if stdout:
-            logger.logger.info(stdout)
             expressions = stdout['expressions']
             covered = expressions['covered_count']
             uncovered = expressions['uncovered_count']

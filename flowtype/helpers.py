@@ -1,6 +1,7 @@
 import re
 import os
 import json
+import time
 import subprocess
 from collections import namedtuple
 
@@ -9,6 +10,10 @@ import sublime
 Arguments = namedtuple('Arguments', [
     'file_name', 'cursor_position', 'row', 'col'
 ])
+
+FLOWTYPE = {
+    'LAST_ERROR_CHECK': time.time(),
+}
 
 
 def singleton(cls):

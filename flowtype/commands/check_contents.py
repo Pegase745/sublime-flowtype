@@ -1,9 +1,10 @@
+import time
 import sublime
 
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments
+from ..helpers import get_flow_bin, prepare_arguments, FLOWTYPE
 
 logger = Logger()
 
@@ -50,6 +51,7 @@ class FlowtypeCheckContents(BaseCommand):
             self.view.erase_status('flow_single_error')
             self.view.set_status(
                 'flow_errors', 'Flow %s: no errors' % flow_version)
+            FLOWTYPE['LAST_ERROR_CHECK'] = time.time()
             return
 
         # Errors
@@ -103,6 +105,7 @@ class FlowtypeCheckContents(BaseCommand):
 
         self.viewport_pos = self.view.viewport_position()
         self.selection = list(self.view.sel())
+        FLOWTYPE['LAST_ERROR_CHECK'] = time.time()
 
     def run(self, view):
         """Execute `check_contents` command."""

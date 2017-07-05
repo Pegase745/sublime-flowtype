@@ -1,0 +1,5 @@
+FlowType 1.0.2
+==============
+
+## Fixed
+  * Set a delay of 1 second between every check for flow errors.
