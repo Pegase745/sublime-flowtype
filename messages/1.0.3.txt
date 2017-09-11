@@ -1,0 +1,5 @@
+FlowType 1.0.3
+==============
+
+## Fixed
+  * Add error output to exec error messages.
