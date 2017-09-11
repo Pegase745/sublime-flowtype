@@ -46,5 +46,9 @@ class ExecFlowCommand(threading.Thread):
 
             os.close(read)
         except subprocess.CalledProcessError as err:
-            self.stderr = str(err)
+            if type(err.output) is bytes:
+                output = err.output.decode('utf-8')
+            else:
+                output = err.output
+            self.stderr = str(err) + ': ' + str(output)
             self.returncode = 1
