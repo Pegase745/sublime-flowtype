@@ -23,6 +23,8 @@
 
 ## Installation
 
+Make sure you have [FlowType installed](https://flow.org/en/docs/install/) and binary `flow` is accesible for Sublime.
+
 This package can be installed using [Package Control](https://packagecontrol.io/). Simply install the `FlowType` package from the official repository.
 
 Otherwise, you must clone this repository in your packages directory. You can find it using the `Preferences -> Browse Packages` menu from within Sublime Text.
