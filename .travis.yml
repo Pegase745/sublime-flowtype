@@ -11,11 +11,12 @@ env:
 
 before_install:
   - curl -OL https://raw.githubusercontent.com/randy3k/UnitTesting/master/sbin/travis.sh
+  - export PATH=$HOME/.local/bin:$PATH
 
 install:
   - sh travis.sh bootstrap
-  - travis_retry pip install --upgrade pip
-  - travis_retry pip install -r requirements-dev.txt
+  - travis_retry pip install --upgrade pip --user `whoami`
+  - travis_retry pip install -r requirements-dev.txt --user `whoami`
 
 script:
   - sh travis.sh run_tests --coverage
