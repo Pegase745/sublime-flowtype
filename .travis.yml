@@ -23,7 +23,7 @@ script:
   - make check
 
 after_success:
-  - travis_retry pip install codecov
+  - travis_retry pip install codecov --user `whoami`
   - codecov
 
 notifications:
