@@ -48,7 +48,7 @@ class FlowtypeViewType(BaseCommand):
         logger.logger.debug(stdout)
 
         if stdout:
-            self.view.show_popup(stdout['type'])
+            self.view.show_popup(stdout['type'].replace('<', '&lt;').replace('>', '&gt;'))
         else:
             self.view.set_status('flow_type', 'Flow: no type found')
 
