@@ -1,0 +1,5 @@
+FlowType 1.0.5
+==============
+
+## Fixed
+  * Fix generic type display.
