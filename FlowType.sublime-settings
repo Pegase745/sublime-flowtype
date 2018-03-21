@@ -9,7 +9,7 @@
 	"log_level": "info",
 
 	// Path to flow binary
-	"flow_bin_path": "/usr/local/bin/flow",
+	"flow_bin_path": "/usr/bin/flow",
 
 	// Allow completions of Flow built-in types
 	"complete_with_builtintypes": true,
