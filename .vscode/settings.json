@@ -148,5 +148,9 @@
         ".ropeproject": true,
         "# Fixtures node_modules": true,
         "node_modules": true
-    }
+    },
+    "python.pythonPath": "/home/pegase/.pyenv/versions/2.7/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.enabled": true
 }

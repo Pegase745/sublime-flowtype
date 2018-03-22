@@ -1,7 +1,7 @@
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments, get_settings
+from ..helpers import prepare_arguments, get_settings
 from ..listeners.builtintypes import print_type_format
 from ..listeners import FLOW_SUGGESTIONS
 
@@ -33,7 +33,8 @@ class FlowtypeAutocomplete(BaseCommand):
     def get_cmd(self):
         """Construct cli command."""
         try:
-            flow_bin = get_flow_bin()
+            flow_bin = self.get_flow_bin()
+            logger.logger.debug('using flow-bin %s' % flow_bin)
         except ValueError as e:
             logger.logger.error('autocomplete %s' % e)
             return

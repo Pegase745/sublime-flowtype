@@ -1,7 +1,7 @@
 import sublime
 import sublime_plugin
 
-from ..helpers import is_js_source, find_in_parent_folders
+from ..helpers import is_js_source, find_in_parent_folders, get_flow_bin
 
 
 class BaseCommand(sublime_plugin.TextCommand):
@@ -15,6 +15,11 @@ class BaseCommand(sublime_plugin.TextCommand):
         """
         file_path = self.active_window.extract_variables()['file_path']
         return find_in_parent_folders('.flowconfig', file_path)
+
+    def get_flow_bin(self):
+        """Return the flow binary to use."""
+        file_path = self.active_window.extract_variables()['file_path']
+        return get_flow_bin(file_path)
 
     def get_content(self):
         """Return file content."""

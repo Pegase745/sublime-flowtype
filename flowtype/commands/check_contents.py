@@ -4,7 +4,7 @@ import sublime
 from .base import BaseCommand
 from .exec_flow import ExecFlowCommand
 from ..logger import Logger
-from ..helpers import get_flow_bin, prepare_arguments, FLOWTYPE
+from ..helpers import prepare_arguments, FLOWTYPE
 
 logger = Logger()
 
@@ -15,7 +15,8 @@ class FlowtypeCheckContents(BaseCommand):
     def get_cmd(self):
         """Construct cli command."""
         try:
-            flow_bin = get_flow_bin()
+            flow_bin = self.get_flow_bin()
+            logger.logger.debug('using flow-bin %s' % flow_bin)
         except ValueError as e:
             logger.logger.error('check_contents %s' % e)
             return

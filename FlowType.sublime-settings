@@ -9,7 +9,9 @@
 	"log_level": "info",
 
 	// Path to flow binary
-	"flow_bin_path": "/usr/bin/flow",
+	// If not mentioned it will search for a flow binary executable
+	// steps: local -> system
+	"flow_bin_path": "",
 
 	// Allow completions of Flow built-in types
 	"complete_with_builtintypes": true,

@@ -1,0 +1,8 @@
+FlowType 1.1.0
+==============
+
+## Changed
+  * Search and use the nearest usable flow binary.
+  The value of "flow_bin_path" in the settings is now optional.
+  If it's set, it will be used. If not, the plugin will search for a local project's flow binary,
+  or else use the system global one in your PATH.

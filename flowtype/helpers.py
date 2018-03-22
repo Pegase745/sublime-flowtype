@@ -45,16 +45,6 @@ def get_settings(setting, default=None):
     return settings.get(setting, default)
 
 
-def get_flow_bin():
-    """Return the full path for the Flow binary."""
-    flow_bin = get_settings('flow_bin_path', None)
-
-    if not flow_bin:
-        raise ValueError('Path value is missing for flow_bin_path setting')
-
-    return flow_bin
-
-
 def prepare_arguments(view):
     """Prepare arguments to be sent to the Flow binary."""
     file_name = view.file_name()
@@ -103,17 +93,52 @@ def find_in_parent_folders(file_name, current_dir):
         file_list = os.listdir(current_dir)
         parent_dir = os.path.dirname(current_dir)
         if file_name in file_list:
-            file_path = "%s/%s" % (current_dir, file_name)
+            file_path = current_dir
             break
         else:
             if current_dir == parent_dir:
                 raise ValueError(
                     "No %s was found in any parent folder" % file_name)
-                break
             else:
                 current_dir = parent_dir
 
     return file_path
+
+
+def find_executable(name, file_path):
+    """
+    Return the path of an executable
+        :param name: name of the executable we're searching for
+    """
+    result = None
+    paths = list(filter(None, list(reversed(os.defpath.split(os.pathsep)))))
+    node_module_path = find_in_parent_folders("package.json", file_path)
+
+    paths.insert(0, "%s/node_modules/.bin" % (node_module_path))
+
+    for outerpath in paths:
+        for innerpath, _, _ in os.walk(outerpath):
+            path = os.path.join(innerpath, name)
+            if os.access(path, os.X_OK):
+                result = os.path.normpath(path)
+                break
+        else:
+            continue
+        break
+
+    return result
+
+
+def get_flow_bin(file_path):
+    """Return the full path for the Flow binary."""
+    flow_bin = get_settings('flow_bin_path', None)
+
+    if not flow_bin:
+        flow_bin = find_executable("flow", file_path)
+        if not flow_bin:
+            raise ValueError('Path value is missing for flow_bin_path setting')
+
+    return flow_bin
 
 
 _hdr_pat = re.compile("^@@ -(\d+),?(\d+)? \+(\d+),?(\d+)? @@$")
