@@ -35,7 +35,7 @@ def is_js_source(view):
     except AttributeError as e:
         file_extension = ''
 
-    return 'source.js' in scope_name or file_extension in ('.js', '.flow')
+    return 'source.js' in scope_name or file_extension in ('.js', '.jsx', '.flow')
 
 
 def get_settings(setting, default=None):
