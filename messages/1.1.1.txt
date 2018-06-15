@@ -1,0 +1,5 @@
+FlowType 1.1.1
+==============
+
+## Fixed
+  * Activate plugin on `.jsx` files.
