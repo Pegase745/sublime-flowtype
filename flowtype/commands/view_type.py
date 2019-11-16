@@ -63,43 +63,33 @@ class FlowtypeViewType(BaseCommand):
             lt = "&lt;"
             gt = "&gt;"
             br = "<br>"
+            comma = ","
 
             # Fix problem with < and >
             formattedString = stdout["type"].replace("<", lt).replace(">", gt)
             logger.logger.info(formattedString)
 
             # ADD BR
-            # Add new lines for curly
-            formattedString = re.sub(
-                r"{(.+)}", leftCurly + br + r"\1" + br + rightCurly, formattedString
-            )
-
-            # Add new lines for braces
-            formattedString = re.sub(
-                r"\((.+?)\)", leftBrace + br + r"\1" + br + rightBrace, formattedString
-            )
-
-            # Add new lines for commas
-            formattedString = re.sub(
-                r"(,) ([a-zA-Z?]+:?)", r"\1<br>\2", formattedString
-            )
-
-            # FORMAT lines
-            formattedString = formattedString.split(br)
-
-            resultString = ""
+            tempRes = ""
             level = 0
-            for line in formattedString:
-                if rightCurly in line or rightBrace in line:
-                    level = level - 1
-                resultString = (
-                    resultString + ("&nbsp;&nbsp;" * level) + line.strip() + br
-                )
-                if leftCurly in line or leftBrace in line:
+            for char in formattedString:
+                if char == leftCurly or char == leftBrace:
                     level = level + 1
+                    tempRes = tempRes + char + br + ("&nbsp;&nbsp;" * level)
+                elif char == rightCurly or char == rightBrace:
+                    level = level - 1
+                    tempRes = tempRes + br + ("&nbsp;&nbsp;" * level) + char
+                elif char == comma:
+                    tempRes = tempRes + char + br + ("&nbsp;&nbsp;" * level)
+                elif char == " ":
+                    if not tempRes.endswith("&nbsp;"):
+                        tempRes = tempRes + char
+                else:
+                    tempRes = tempRes + char
 
+            formattedString = tempRes
             self.view.show_popup(
-                """<html><body><p>""" + resultString + """</p></body></html>""",
+                """<html><body><p>""" + formattedString + """</p></body></html>""",
                 max_width=800,
                 max_height=2400,
             )
