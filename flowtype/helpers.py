@@ -7,12 +7,10 @@ from collections import namedtuple
 
 import sublime
 
-Arguments = namedtuple('Arguments', [
-    'file_name', 'cursor_position', 'row', 'col'
-])
+Arguments = namedtuple("Arguments", ["file_name", "cursor_position", "row", "col"])
 
 FLOWTYPE = {
-    'LAST_ERROR_CHECK': time.time(),
+    "LAST_ERROR_CHECK": time.time(),
 }
 
 
@@ -24,6 +22,7 @@ def singleton(cls):
         if cls not in _instances:
             _instances[cls] = cls()
         return _instances[cls]
+
     return getinstance
 
 
@@ -33,14 +32,14 @@ def is_js_source(view):
     try:
         file_extension = os.path.splitext(view.file_name())[1:][0]
     except AttributeError as e:
-        file_extension = ''
+        file_extension = ""
 
-    return 'source.js' in scope_name or file_extension in ('.js', '.jsx', '.flow')
+    return "source.js" in scope_name or file_extension in (".js", ".jsx", ".flow")
 
 
 def get_settings(setting, default=None):
     """Get settings."""
-    settings = sublime.load_settings('FlowType.sublime-settings')
+    settings = sublime.load_settings("FlowType.sublime-settings")
 
     return settings.get(setting, default)
 
@@ -52,10 +51,7 @@ def prepare_arguments(view):
     row, col = view.rowcol(cursor_position)
 
     return Arguments(
-        file_name=file_name,
-        cursor_position=cursor_position,
-        row=row,
-        col=col
+        file_name=file_name, cursor_position=cursor_position, row=row, col=col
     )
 
 
@@ -66,13 +62,11 @@ def run_flow(command, contents):
     os.close(write)
 
     try:
-        output = subprocess.check_output(
-            command, stderr=subprocess.STDOUT, stdin=read
-        )
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT, stdin=read)
 
-        decoded_output = output.decode('utf-8')
+        decoded_output = output.decode("utf-8")
 
-        clean_output = decoded_output[decoded_output.find('{\"'):]
+        clean_output = decoded_output[decoded_output.find('{"') :]
 
         result = json.loads(clean_output)
 
@@ -97,8 +91,7 @@ def find_in_parent_folders(file_name, current_dir):
             break
         else:
             if current_dir == parent_dir:
-                raise ValueError(
-                    "No %s was found in any parent folder" % file_name)
+                raise ValueError("No %s was found in any parent folder" % file_name)
             else:
                 current_dir = parent_dir
 
@@ -131,12 +124,12 @@ def find_executable(name, file_path):
 
 def get_flow_bin(file_path):
     """Return the full path for the Flow binary."""
-    flow_bin = get_settings('flow_bin_path', None)
+    flow_bin = get_settings("flow_bin_path", None)
 
     if not flow_bin:
         flow_bin = find_executable("flow", file_path)
         if not flow_bin:
-            raise ValueError('Path value is missing for flow_bin_path setting')
+            raise ValueError("Path value is missing for flow_bin_path setting")
 
     return flow_bin
 
@@ -152,9 +145,9 @@ def apply_patch(s, patch, revert=False):
     """
     s = s.splitlines(True)
     p = patch.splitlines(True)
-    t = ''
-    i = sl = 1 # start at line 2 # noqa
-    (midx, sign) = (1, '+') if not revert else (3, '-')
+    t = ""
+    i = sl = 1  # start at line 2 # noqa
+    (midx, sign) = (1, "+") if not revert else (3, "-")
     while i < len(p) and p[i].startswith(("---", "+++")):
         i += 1  # skip header lines
     while i < len(p):
@@ -162,19 +155,19 @@ def apply_patch(s, patch, revert=False):
         if not m:
             raise Exception("Cannot process diff")
         i += 1
-        l = int(m.group(midx)) - 1 + (m.group(midx + 1) == '0')  # noqa
-        t += ''.join(s[sl:l])
+        l = int(m.group(midx)) - 1 + (m.group(midx + 1) == "0")  # noqa
+        t += "".join(s[sl:l])
         sl = l
-        while i < len(p) and p[i][0] != '@':
-            if i + 1 < len(p) and p[i + 1][0] == '\\':
+        while i < len(p) and p[i][0] != "@":
+            if i + 1 < len(p) and p[i + 1][0] == "\\":
                 line = p[i][:-1]
                 i += 2
             else:
                 line = p[i]
                 i += 1
             if len(line) > 0:
-                if line[0] == sign or line[0] == ' ':
+                if line[0] == sign or line[0] == " ":
                     t += line[1:]
-                sl += (line[0] != sign)
-    t += ''.join(s[sl:])
+                sl += line[0] != sign
+    t += "".join(s[sl:])
     return t

@@ -20,8 +20,8 @@ class TestCase(unittest.TestCase):
             # a scratch buffer never reports as being dirty
             self.view.set_scratch(True)
             try:
-                self.view.erase_status('flow_type')
-                self.view.erase_regions('flow_type_highlights')
+                self.view.erase_status("flow_type")
+                self.view.erase_regions("flow_type_highlights")
             except Exception as e:
                 return
             self.view.window().focus_view(self.view)
@@ -33,5 +33,4 @@ class TestCase(unittest.TestCase):
 
     def getRow(self, row):
         """Return content of a given row number."""
-        return self.view.substr(self.view.line(
-                                self.view.text_point(row - 1, 0)))
+        return self.view.substr(self.view.line(self.view.text_point(row - 1, 0)))

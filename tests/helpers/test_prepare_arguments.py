@@ -20,12 +20,9 @@ class TestPrepareArguments(unittest.TestCase):
 
     def test_complete_args(self):
         """Return a name tuple with arguments."""
-        file_path = '/src/myfile'
+        file_path = "/src/myfile"
         expected_arguments = Arguments(
-            file_name=file_path,
-            cursor_position=4,
-            row=0,
-            col=0
+            file_name=file_path, cursor_position=4, row=0, col=0
         )
 
         view = mock_view(file_path)

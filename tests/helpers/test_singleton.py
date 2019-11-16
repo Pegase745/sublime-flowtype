@@ -12,6 +12,7 @@ class TestSingleton(unittest.TestCase):
 
     def test_same_instance(self):
         """Return true if it's the same instance."""
+
         @singleton
         class Fake(object):
             pass
