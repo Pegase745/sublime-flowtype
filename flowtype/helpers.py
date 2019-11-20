@@ -4,6 +4,7 @@ import re
 import subprocess
 import time
 from collections import namedtuple
+from configparser import RawConfigParser
 
 import sublime
 
@@ -142,6 +143,16 @@ def get_flow_bin(file_path):
             raise ValueError("Path value is missing for flow_bin_path setting")
 
     return flow_bin
+
+
+def has_all_config_enabled(file_path):
+    """Return the presence of `all=true` in flowconfig."""
+    flowconfig_path = find_in_parent_folders(".flowconfig", file_path)
+
+    configParser = RawConfigParser()
+    configParser.read(os.path.join(flowconfig_path, ".flowconfig"))
+
+    return configParser.getboolean("options", "all")
 
 
 _hdr_pat = re.compile("^@@ -(\d+),?(\d+)? \+(\d+),?(\d+)? @@$")

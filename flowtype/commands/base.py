@@ -1,7 +1,8 @@
 import sublime
 import sublime_plugin
 
-from ..helpers import is_js_source, find_in_parent_folders, get_flow_bin
+from ..helpers import (find_in_parent_folders, get_flow_bin,
+                       has_all_config_enabled, is_js_source)
 
 
 class BaseCommand(sublime_plugin.TextCommand):
@@ -57,8 +58,13 @@ class BaseCommand(sublime_plugin.TextCommand):
 
     def is_enabled(self):
         """Enable the command only on Javascript files and has flow pragma."""
+        file_path = self.active_window.extract_variables()["file_path"]
         content = self.get_content()
-        pragma = "// @flow" in content or "/* @flow */" in content
+        pragma = (
+            "// @flow" in content
+            or "/* @flow */" in content
+            or has_all_config_enabled(file_path)
+        )
 
         return is_js_source(self.view) and pragma
 
