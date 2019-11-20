@@ -1,0 +1,8 @@
+FlowType 1.2.0
+==============
+
+## Changed
+  * Improve popup formatting.
+  * Format source code with `black`.
+
+Thanks @max-mykhailenko for the contribution.
