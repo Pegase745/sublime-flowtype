@@ -12,7 +12,9 @@ class MetaLogger(type):
         """Set default attributes from the args passed to the object's init."""
         obj = super(MetaLogger, cls).__call__(*args, **kwargs)
         argspec = inspect.getfullargspec(obj.__init__)
-        defaults = dict(zip(argspec.args[-len(argspec.defaults) :], argspec.defaults))
+        defaults = dict(
+            zip(argspec.args[-len(argspec.defaults) :], argspec.defaults)
+        )
         defaults.update(kwargs)
 
         for key, val in defaults.items():
@@ -36,7 +38,13 @@ class Logger(metaclass=MetaLogger):
 
         if not self.logging_configured:
             log_level = get_settings("log_level", "info")
-            if log_level not in ["debug", "info", "warning", "error", "critical"]:
+            if log_level not in [
+                "debug",
+                "info",
+                "warning",
+                "error",
+                "critical",
+            ]:
                 log_level = "warning"
 
             logger.propagate = False

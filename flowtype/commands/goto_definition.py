@@ -58,7 +58,11 @@ class FlowtypeGotoDefinition(BaseCommand):
 
         if stdout and stdout["path"]:
             self.active_window.open_file(
-                stdout["path"] + ":" + str(stdout["line"]) + ":" + str(stdout["start"]),
+                stdout["path"]
+                + ":"
+                + str(stdout["line"])
+                + ":"
+                + str(stdout["start"]),
                 sublime.ENCODED_POSITION | False,
             )
         else:

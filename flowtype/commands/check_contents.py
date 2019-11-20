@@ -54,7 +54,9 @@ class FlowtypeCheckContents(BaseCommand):
         if passed:
             self.view.erase_status("flow_errors")
             self.view.erase_status("flow_single_error")
-            self.view.set_status("flow_errors", "Flow %s: no errors" % flow_version)
+            self.view.set_status(
+                "flow_errors", "Flow %s: no errors" % flow_version
+            )
             FLOWTYPE["LAST_ERROR_CHECK"] = time.time()
             return
 
@@ -80,13 +82,19 @@ class FlowtypeCheckContents(BaseCommand):
             for message in messages:
                 legend.append(message["descr"])
 
-            full_description.append("{} {}".format(row + 1, operation["context"]))
+            full_description.append(
+                "{} {}".format(row + 1, operation["context"])
+            )
             full_description.append(" ".join(legend))
 
             error_per_line[row + 1] = " ".join(legend)
 
         self.view.add_regions(
-            "flow_type_highlights", regions, "string", "dot", sublime.DRAW_NO_FILL
+            "flow_type_highlights",
+            regions,
+            "string",
+            "dot",
+            sublime.DRAW_NO_FILL,
         )
 
         cursor_position = self.view.sel()[0].begin()

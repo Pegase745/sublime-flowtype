@@ -24,23 +24,37 @@ builtintypes = [
     print_type_format("void", description="Flow built-in type"),
     print_type_format("Class", "Class<${1}>", "Flow built-in type"),
     # Built-in 'private' types
-    print_type_format("Abstract", "\$Abstract<${1}>", "Flow built-in private type"),
-    print_type_format("Diff", "\$Diff<${1}, ${2}>", "Flow built-in private type"),
+    print_type_format(
+        "Abstract", "\$Abstract<${1}>", "Flow built-in private type"
+    ),
+    print_type_format(
+        "Diff", "\$Diff<${1}, ${2}>", "Flow built-in private type"
+    ),
     print_type_format("Exact", "\$Exact<${1}>", "Flow built-in private type"),
     print_type_format("Keys", "\$Keys<${1}>", "Flow built-in private type"),
-    print_type_format("ObjMap", "\$ObjMap<${1}, ${2}>", "Flow built-in private type"),
     print_type_format(
-        "PropertyType", "\$PropertyType<${1}, ${2}>", "Flow built-in private type"
+        "ObjMap", "\$ObjMap<${1}, ${2}>", "Flow built-in private type"
     ),
-    print_type_format("Subtype", "\$Subtype<${1}, ${2}>", "Flow built-in private type"),
+    print_type_format(
+        "PropertyType",
+        "\$PropertyType<${1}, ${2}>",
+        "Flow built-in private type",
+    ),
+    print_type_format(
+        "Subtype", "\$Subtype<${1}, ${2}>", "Flow built-in private type"
+    ),
     print_type_format(
         "Supertype", "\$Supertype<${1}, ${2}>", "Flow built-in private type"
     ),
     # Core types
     print_type_format("Array", "Array<${1}>", "Flow core type"),
     print_type_format("ArrayBuffer", description="Flow core type"),
-    print_type_format("AsyncIterable", "AsyncIterable<${1}>", "Flow core type"),
-    print_type_format("AsyncIterator", "AsyncIterator<${1}>", "Flow core type"),
+    print_type_format(
+        "AsyncIterable", "AsyncIterable<${1}>", "Flow core type"
+    ),
+    print_type_format(
+        "AsyncIterator", "AsyncIterator<${1}>", "Flow core type"
+    ),
     print_type_format("Boolean", description="Flow core type"),
     print_type_format("CallSite", description="Flow core type"),
     print_type_format("DataView", description="Flow core type"),
@@ -57,7 +71,9 @@ builtintypes = [
     print_type_format("Int8Array", description="Flow core type"),
     print_type_format("Iterable", "Iterable<${1}>", "Flow core type"),
     print_type_format("Iterator", "Iterator<${1}>", "Flow core type"),
-    print_type_format("IteratorResult", "IteratorResult<${1}, ${2}>", "Flow core type"),
+    print_type_format(
+        "IteratorResult", "IteratorResult<${1}, ${2}>", "Flow core type"
+    ),
     print_type_format("JSON", description="Flow core type"),
     print_type_format("Map", "Map<${1}, ${2}>", "Flow core type"),
     print_type_format("NaN", description="Flow core type"),
@@ -83,10 +99,14 @@ builtintypes = [
     print_type_format("WeakSet", "WeakSet<${1}>", "Flow core type"),
     # Core 'private' types
     print_type_format(
-        "ArrayBufferView", "\$ArrayBufferView", description="Flow core private type"
+        "ArrayBufferView",
+        "\$ArrayBufferView",
+        description="Flow core private type",
     ),
     print_type_format(
-        "ReadOnlyArray", "\$ReadOnlyArray<${1}>", description="Flow core private type"
+        "ReadOnlyArray",
+        "\$ReadOnlyArray<${1}>",
+        description="Flow core private type",
     ),
     print_type_format(
         "SymboIsConcatSpreadable",
@@ -94,43 +114,61 @@ builtintypes = [
         description="Flow core private type",
     ),
     print_type_format(
-        "SymbolHasInstance", "\$SymbolHasInstance", description="Flow core private type"
+        "SymbolHasInstance",
+        "\$SymbolHasInstance",
+        description="Flow core private type",
     ),
     print_type_format(
-        "SymbolIterator", "\$SymbolIterator", description="Flow core private type"
+        "SymbolIterator",
+        "\$SymbolIterator",
+        description="Flow core private type",
     ),
     print_type_format(
         "SymbolMatch", "\$SymbolMatch", description="Flow core private type"
     ),
     print_type_format(
-        "SymbolReplace", "\$SymbolReplace", description="Flow core private type"
+        "SymbolReplace",
+        "\$SymbolReplace",
+        description="Flow core private type",
     ),
     print_type_format(
         "SymbolSearch", "\$SymbolSearch", description="Flow core private type"
     ),
     print_type_format(
-        "SymbolSpecies", "\$SymbolSpecies", description="Flow core private type"
+        "SymbolSpecies",
+        "\$SymbolSpecies",
+        description="Flow core private type",
     ),
     print_type_format(
         "SymbolSplit", "\$SymbolSplit", description="Flow core private type"
     ),
     print_type_format(
-        "SymbolToPrimitive", "\$SymbolToPrimitive", description="Flow core private type"
+        "SymbolToPrimitive",
+        "\$SymbolToPrimitive",
+        description="Flow core private type",
     ),
     print_type_format(
-        "SymbolToStringTag", "\$SymbolToStringTag", description="Flow core private type"
+        "SymbolToStringTag",
+        "\$SymbolToStringTag",
+        description="Flow core private type",
     ),
     print_type_format(
-        "SymbolUnscopables", "\$SymbolUnscopables", description="Flow core private type"
+        "SymbolUnscopables",
+        "\$SymbolUnscopables",
+        description="Flow core private type",
     ),
     print_type_format(
         "TypedArray", "\$TypedArray", description="Flow core private type"
     ),
     print_type_format(
-        "Proxyrevocable", "Proxy\$revocable<${1}>", description="Flow core private type"
+        "Proxyrevocable",
+        "Proxy\$revocable<${1}>",
+        description="Flow core private type",
     ),
     print_type_format(
-        "Proxytraps", "Proxy\$traps<${1}>", description="Flow core private type"
+        "Proxytraps",
+        "Proxy\$traps<${1}>",
+        description="Flow core private type",
     ),
     print_type_format(
         "RegExpflags", "RegExp\$flags", description="Flow core private type"
@@ -145,11 +183,17 @@ builtintypes = [
         "Flow React type",
     ),
     print_type_format("ReactClass", "ReactClass<${1}>", "Flow React type"),
-    print_type_format("ReactPropsChainableTypeChecker", description="Flow React type"),
+    print_type_format(
+        "ReactPropsChainableTypeChecker", description="Flow React type"
+    ),
     print_type_format("ReactPropsCheckType", description="Flow React type"),
     print_type_format("ReactPropTypes", description="Flow React type"),
-    print_type_format("SyntheticClipboardEvent", description="Flow React type"),
-    print_type_format("SyntheticCompositionEvent", description="Flow React type"),
+    print_type_format(
+        "SyntheticClipboardEvent", description="Flow React type"
+    ),
+    print_type_format(
+        "SyntheticCompositionEvent", description="Flow React type"
+    ),
     print_type_format("SyntheticDragEvent", description="Flow React type"),
     print_type_format("SyntheticEvent", description="Flow React type"),
     print_type_format("SyntheticFocusEvent", description="Flow React type"),
@@ -160,27 +204,39 @@ builtintypes = [
     print_type_format("SyntheticUIEvent", description="Flow React type"),
     print_type_format("SyntheticWheelEvent", description="Flow React type"),
     # React 'private' types
-    print_type_format("DefaultPropsOf", "\$DefaultPropsOf<${1}>", "Flow React type"),
+    print_type_format(
+        "DefaultPropsOf", "\$DefaultPropsOf<${1}>", "Flow React type"
+    ),
     print_type_format("JSXIntrinsics", "\$JSXIntrinsics", "Flow React type"),
     print_type_format("PropsOf", "\$PropsOf<${1}>", "Flow React type"),
     print_type_format(
-        "ReactComponent", "React\$Component<${1}, ${2}, ${3}>", "Flow React type"
+        "ReactComponent",
+        "React\$Component<${1}, ${2}, ${3}>",
+        "Flow React type",
     ),
-    print_type_format("ReactElement", "React\$Element<${1}>", "Flow React type"),
+    print_type_format(
+        "ReactElement", "React\$Element<${1}>", "Flow React type"
+    ),
     print_type_format(
         "ReactPropTypesarrayOf", "React\$PropTypes\$arrayOf", "Flow React type"
     ),
     print_type_format(
-        "ReactPropTypesinstanceOf", "React\$PropTypes\$instanceOf", "Flow React type"
+        "ReactPropTypesinstanceOf",
+        "React\$PropTypes\$instanceOf",
+        "Flow React type",
     ),
     print_type_format(
-        "ReactPropTypesobjectOf", "React\$PropTypes\$objectOf", "Flow React type"
+        "ReactPropTypesobjectOf",
+        "React\$PropTypes\$objectOf",
+        "Flow React type",
     ),
     print_type_format(
         "ReactPropTypesoneOf", "React\$PropTypes\$oneOf", "Flow React type"
     ),
     print_type_format(
-        "ReactPropTypesoneOfType", "React\$PropTypes\$oneOfType", "Flow React type"
+        "ReactPropTypesoneOfType",
+        "React\$PropTypes\$oneOfType",
+        "Flow React type",
     ),
     print_type_format(
         "ReactPropTypesshape", "React\$PropTypes\$shape", "Flow React type"
@@ -226,11 +282,15 @@ builtintypes = [
     print_type_format("DragEventListener", description="Flow DOM type"),
     print_type_format("DragEventTypes", description="Flow DOM type"),
     print_type_format("Element", description="Flow DOM type"),
-    print_type_format("ElementRegistrationOptions", description="Flow DOM type"),
+    print_type_format(
+        "ElementRegistrationOptions", description="Flow DOM type"
+    ),
     print_type_format("Event", description="Flow DOM type"),
     print_type_format("EventHandler", description="Flow DOM type"),
     print_type_format("EventListener", description="Flow DOM type"),
-    print_type_format("EventListenerOptionsOrUseCapture", description="Flow DOM type"),
+    print_type_format(
+        "EventListenerOptionsOrUseCapture", description="Flow DOM type"
+    ),
     print_type_format("EventTarget", description="Flow DOM type"),
     print_type_format("File", description="Flow DOM type"),
     print_type_format("FileList", description="Flow DOM type"),
@@ -242,7 +302,9 @@ builtintypes = [
     print_type_format("HTMLBaseElement", description="Flow DOM type"),
     print_type_format("HTMLButtonElement", description="Flow DOM type"),
     print_type_format("HTMLCanvasElement", description="Flow DOM type"),
-    print_type_format("HTMLCollection", "HTMLCollection<${1}>", "Flow DOM type"),
+    print_type_format(
+        "HTMLCollection", "HTMLCollection<${1}>", "Flow DOM type"
+    ),
     print_type_format("HTMLDivElement", description="Flow DOM type"),
     print_type_format("HTMLElement", description="Flow DOM type"),
     print_type_format("HTMLEmbedElement", description="Flow DOM type"),
@@ -292,7 +354,9 @@ builtintypes = [
     print_type_format("NodeFilter", description="Flow DOM type"),
     print_type_format("NodeFilterCallback", description="Flow DOM type"),
     print_type_format("NodeFilterInterface", description="Flow DOM type"),
-    print_type_format("NodeIterator", "NodeIterator<${1}, ${2}>", "Flow DOM type"),
+    print_type_format(
+        "NodeIterator", "NodeIterator<${1}, ${2}>", "Flow DOM type"
+    ),
     print_type_format("NodeList", "NodeList<${1}>", "Flow DOM type"),
     print_type_format("Path2D", description="Flow DOM type"),
     print_type_format("ProgressEvent", description="Flow DOM type"),
@@ -342,7 +406,9 @@ builtintypes = [
     print_type_format("WheelEventListener", description="Flow DOM type"),
     print_type_format("WheelEventTypes", description="Flow DOM type"),
     # Document Object Model 'private' types
-    print_type_format("CustomEventInit", "CustomEvent\$Init", "Flow DOM private type"),
+    print_type_format(
+        "CustomEventInit", "CustomEvent\$Init", "Flow DOM private type"
+    ),
     print_type_format("EventInit", "Event\$Init", "Flow DOM private type"),
     # Browser Object Model types
     print_type_format("AnalyserNode", description="Flow BOM type"),
@@ -363,7 +429,9 @@ builtintypes = [
     print_type_format("ConvolverNode", description="Flow BOM type"),
     print_type_format("Coordinates", description="Flow BOM type"),
     print_type_format("CredentialsType", description="Flow BOM type"),
-    print_type_format("DedicatedWorkerGlobalScope", description="Flow BOM type"),
+    print_type_format(
+        "DedicatedWorkerGlobalScope", description="Flow BOM type"
+    ),
     print_type_format("DelayNode", description="Flow BOM type"),
     print_type_format("DOMParser", description="Flow BOM type"),
     print_type_format("DynamicsCompressorNode", description="Flow BOM type"),
@@ -377,9 +445,13 @@ builtintypes = [
     print_type_format("HeadersInit", description="Flow BOM type"),
     print_type_format("History", description="Flow BOM type"),
     print_type_format("Location", description="Flow BOM type"),
-    print_type_format("MediaElementAudioSourceNode", description="Flow BOM type"),
+    print_type_format(
+        "MediaElementAudioSourceNode", description="Flow BOM type"
+    ),
     print_type_format("MediaStream", description="Flow BOM type"),
-    print_type_format("MediaStreamAudioSourceNode", description="Flow BOM type"),
+    print_type_format(
+        "MediaStreamAudioSourceNode", description="Flow BOM type"
+    ),
     print_type_format("MediaStreamTrack", description="Flow BOM type"),
     print_type_format("MessageChannel", description="Flow BOM type"),
     print_type_format("MessagePort", description="Flow BOM type"),
@@ -388,7 +460,9 @@ builtintypes = [
     print_type_format("MimeTypeArray", description="Flow BOM type"),
     print_type_format("ModeType", description="Flow BOM type"),
     print_type_format("MutationObserver", description="Flow BOM type"),
-    print_type_format("MutationObserverInitRequired", description="Flow BOM type"),
+    print_type_format(
+        "MutationObserverInitRequired", description="Flow BOM type"
+    ),
     print_type_format("MutationRecord", description="Flow BOM type"),
     print_type_format("Navigator", description="Flow BOM type"),
     print_type_format("NavigatorCommon", description="Flow BOM type"),
@@ -396,10 +470,16 @@ builtintypes = [
     print_type_format("PannerNode", description="Flow BOM type"),
     print_type_format("Performance", description="Flow BOM type"),
     print_type_format("PerformanceEntry", description="Flow BOM type"),
-    print_type_format("PerformanceEntryFilterOptions", description="Flow BOM type"),
+    print_type_format(
+        "PerformanceEntryFilterOptions", description="Flow BOM type"
+    ),
     print_type_format("PerformanceNavigation", description="Flow BOM type"),
-    print_type_format("PerformanceNavigationTiming", description="Flow BOM type"),
-    print_type_format("PerformanceResourceTiming", description="Flow BOM type"),
+    print_type_format(
+        "PerformanceNavigationTiming", description="Flow BOM type"
+    ),
+    print_type_format(
+        "PerformanceResourceTiming", description="Flow BOM type"
+    ),
     print_type_format("PerformanceTiming", description="Flow BOM type"),
     print_type_format("PeriodicWave", description="Flow BOM type"),
     print_type_format("Plugin", description="Flow BOM type"),
@@ -429,7 +509,9 @@ builtintypes = [
     print_type_format("WorkerNavigator", description="Flow BOM type"),
     print_type_format("XDomainRequest", description="Flow BOM type"),
     print_type_format("XMLHttpRequest", description="Flow BOM type"),
-    print_type_format("XMLHttpRequestEventTarget", description="Flow BOM type"),
+    print_type_format(
+        "XMLHttpRequestEventTarget", description="Flow BOM type"
+    ),
     print_type_format("XMLSerializer", description="Flow BOM type"),
     # Browser Object Model 'private' types
     print_type_format(
@@ -486,8 +568,12 @@ builtintypes = [
     print_type_format("Server", description="Flow Node.js type"),
     print_type_format("Socket", description="Flow Node.js type"),
     print_type_format("Process", description="Flow Node.js type"),
-    print_type_format("readableStreamOptions", description="Flow Node.js type"),
-    print_type_format("writableStreamOptions", description="Flow Node.js type"),
+    print_type_format(
+        "readableStreamOptions", description="Flow Node.js type"
+    ),
+    print_type_format(
+        "writableStreamOptions", description="Flow Node.js type"
+    ),
     print_type_format("Deflate", description="Flow Node.js type"),
     print_type_format("DeflateRaw", description="Flow Node.js type"),
     print_type_format("Gunzip", description="Flow Node.js type"),
@@ -514,7 +600,9 @@ builtintypes = [
         "Flow Node.js private type",
     ),
     print_type_format(
-        "child_processError", "child_process\$Error", "Flow Node.js private type"
+        "child_processError",
+        "child_process\$Error",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "child_processexecCallback",
@@ -537,7 +625,9 @@ builtintypes = [
         "Flow Node.js private type",
     ),
     print_type_format(
-        "child_processexecOpts", "child_process\$execOpts", "Flow Node.js private type"
+        "child_processexecOpts",
+        "child_process\$execOpts",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "child_processexecSyncOpts",
@@ -545,10 +635,14 @@ builtintypes = [
         "Flow Node.js private type",
     ),
     print_type_format(
-        "child_processforkOpts", "child_process\$forkOpts", "Flow Node.js private type"
+        "child_processforkOpts",
+        "child_process\$forkOpts",
+        "Flow Node.js private type",
     ),
     print_type_format(
-        "child_processHandle", "child_process\$Handle", "Flow Node.js private type"
+        "child_processHandle",
+        "child_process\$Handle",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "child_processspawnOpts",
@@ -556,7 +650,9 @@ builtintypes = [
         "Flow Node.js private type",
     ),
     print_type_format(
-        "child_processspawnRet", "child_process\$spawnRet", "Flow Node.js private type"
+        "child_processspawnRet",
+        "child_process\$spawnRet",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "child_processspawnSyncOpts",
@@ -573,8 +669,12 @@ builtintypes = [
         "cluster\$setupMasterOpts",
         "Flow Node.js private type",
     ),
-    print_type_format("clusterWorker", "cluster\$Worker", "Flow Node.js private type"),
-    print_type_format("cryptoCipher", "crypto\$Cipher", "Flow Node.js private type"),
+    print_type_format(
+        "clusterWorker", "cluster\$Worker", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "cryptoCipher", "crypto\$Cipher", "Flow Node.js private type"
+    ),
     print_type_format(
         "cryptocreateCredentialsDetails",
         "crypto\$createCredentialsDetails",
@@ -587,30 +687,50 @@ builtintypes = [
         "cryptoDecipher", "crypto\$Decipher", "Flow Node.js private type"
     ),
     print_type_format(
-        "cryptoDiffieHellman", "crypto\$DiffieHellman", "Flow Node.js private type"
+        "cryptoDiffieHellman",
+        "crypto\$DiffieHellman",
+        "Flow Node.js private type",
     ),
-    print_type_format("cryptoHash", "crypto\$Hash", "Flow Node.js private type"),
-    print_type_format("cryptoHmac", "crypto\$Hmac", "Flow Node.js private type"),
-    print_type_format("cryptoSign", "crypto\$Sign", "Flow Node.js private type"),
+    print_type_format(
+        "cryptoHash", "crypto\$Hash", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "cryptoHmac", "crypto\$Hmac", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "cryptoSign", "crypto\$Sign", "Flow Node.js private type"
+    ),
     print_type_format(
         "cryptoSignprivate_key",
         "crypto\$Sign\$private_key",
         "Flow Node.js private type",
     ),
-    print_type_format("cryptoVerify", "crypto\$Verify", "Flow Node.js private type"),
-    print_type_format("dgramSocket", "dgram\$Socket", "Flow Node.js private type"),
-    print_type_format("domainDomain", "domain\$Domain", "Flow Node.js private type"),
     print_type_format(
-        "eventsEventEmitter", "events\$EventEmitter", "Flow Node.js private type"
+        "cryptoVerify", "crypto\$Verify", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "dgramSocket", "dgram\$Socket", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "domainDomain", "domain\$Domain", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "eventsEventEmitter",
+        "events\$EventEmitter",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "httpClientRequest", "http\$ClientRequest", "Flow Node.js private type"
     ),
     print_type_format(
-        "httpIncomingMessage", "http\$IncomingMessage", "Flow Node.js private type"
+        "httpIncomingMessage",
+        "http\$IncomingMessage",
+        "Flow Node.js private type",
     ),
     print_type_format(
-        "httpServerResponse", "http\$ServerResponse", "Flow Node.js private type"
+        "httpServerResponse",
+        "http\$ServerResponse",
+        "Flow Node.js private type",
     ),
     print_type_format(
         "netconnectOptions", "net\$connectOptions", "Flow Node.js private type"
@@ -621,7 +741,9 @@ builtintypes = [
         "netSocketaddress", "net\$Socket\$address", "Flow Node.js private type"
     ),
     print_type_format("osCPU", "os\$CPU", "Flow Node.js private type"),
-    print_type_format("osNetIFAddr", "os\$NetIFAddr", "Flow Node.js private type"),
+    print_type_format(
+        "osNetIFAddr", "os\$NetIFAddr", "Flow Node.js private type"
+    ),
     print_type_format(
         "osUserInfobuffer", "os\$UserInfo\$buffer", "Flow Node.js private type"
     ),
@@ -631,14 +753,18 @@ builtintypes = [
     print_type_format(
         "readlineInterface", "readline\$Interface", "Flow Node.js private type"
     ),
-    print_type_format("streamDuplex", "stream\$Duplex", "Flow Node.js private type"),
+    print_type_format(
+        "streamDuplex", "stream\$Duplex", "Flow Node.js private type"
+    ),
     print_type_format(
         "streamPassThrough", "stream\$PassThrough", "Flow Node.js private type"
     ),
     print_type_format(
         "streamReadable", "stream\$Readable", "Flow Node.js private type"
     ),
-    print_type_format("streamStream", "stream\$Stream", "Flow Node.js private type"),
+    print_type_format(
+        "streamStream", "stream\$Stream", "Flow Node.js private type"
+    ),
     print_type_format(
         "streamTransform", "stream\$Transform", "Flow Node.js private type"
     ),
@@ -651,8 +777,12 @@ builtintypes = [
         "Flow Node.js private type",
     ),
     print_type_format("tlsServer", "tls\$Server", "Flow Node.js private type"),
-    print_type_format("tlsTLSSocket", "tls\$TLSSocket", "Flow Node.js private type"),
-    print_type_format("ttyReadStream", "tty\$ReadStream", "Flow Node.js private type"),
+    print_type_format(
+        "tlsTLSSocket", "tls\$TLSSocket", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "ttyReadStream", "tty\$ReadStream", "Flow Node.js private type"
+    ),
     print_type_format(
         "ttyWriteStream", "tty\$WriteStream", "Flow Node.js private type"
     ),
@@ -661,47 +791,77 @@ builtintypes = [
     print_type_format(
         "vmScriptOptions", "vm\$ScriptOptions", "Flow Node.js private type"
     ),
-    print_type_format("zlibasyncFn", "zlib\$asyncFn", "Flow Node.js private type"),
-    print_type_format("zliboptions", "zlib\$options", "Flow Node.js private type"),
-    print_type_format("zlibsyncFn", "zlib\$syncFn", "Flow Node.js private type"),
+    print_type_format(
+        "zlibasyncFn", "zlib\$asyncFn", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "zliboptions", "zlib\$options", "Flow Node.js private type"
+    ),
+    print_type_format(
+        "zlibsyncFn", "zlib\$syncFn", "Flow Node.js private type"
+    ),
     # Service Workers types
     print_type_format("Cache", description="Flow service worker type"),
-    print_type_format("CacheQueryOptions", description="Flow service worker type"),
+    print_type_format(
+        "CacheQueryOptions", description="Flow service worker type"
+    ),
     print_type_format("CacheStorage", description="Flow service worker type"),
     print_type_format("Client", description="Flow service worker type"),
-    print_type_format("ClientQueryOptions", description="Flow service worker type"),
+    print_type_format(
+        "ClientQueryOptions", description="Flow service worker type"
+    ),
     print_type_format("Clients", description="Flow service worker type"),
     print_type_format("ClientType", description="Flow service worker type"),
-    print_type_format("ExtendableEvent", description="Flow service worker type"),
+    print_type_format(
+        "ExtendableEvent", description="Flow service worker type"
+    ),
     print_type_format("FetchEvent", description="Flow service worker type"),
-    print_type_format("ForeignFetchOptions", description="Flow service worker type"),
+    print_type_format(
+        "ForeignFetchOptions", description="Flow service worker type"
+    ),
     print_type_format("FrameType", description="Flow service worker type"),
     print_type_format("InstallEvent", description="Flow service worker type"),
     print_type_format(
         "NavigationPreloadManager", description="Flow service worker type"
     ),
-    print_type_format("NavigationPreloadState", description="Flow service worker type"),
-    print_type_format("RegistrationOptions", description="Flow service worker type"),
+    print_type_format(
+        "NavigationPreloadState", description="Flow service worker type"
+    ),
+    print_type_format(
+        "RegistrationOptions", description="Flow service worker type"
+    ),
     print_type_format("RequestInfo", description="Flow service worker type"),
     print_type_format("ServiceWorker", description="Flow service worker type"),
-    print_type_format("ServiceWorkerContainer", description="Flow service worker type"),
+    print_type_format(
+        "ServiceWorkerContainer", description="Flow service worker type"
+    ),
     print_type_format(
         "ServiceWorkerMessageEvent", description="Flow service worker type"
     ),
     print_type_format(
         "ServiceWorkerRegistration", description="Flow service worker type"
     ),
-    print_type_format("ServiceWorkerState", description="Flow service worker type"),
-    print_type_format("VisibilityState", description="Flow service worker type"),
+    print_type_format(
+        "ServiceWorkerState", description="Flow service worker type"
+    ),
+    print_type_format(
+        "VisibilityState", description="Flow service worker type"
+    ),
     print_type_format("WindowClient", description="Flow service worker type"),
     print_type_format("WorkerType", description="Flow service worker type"),
     # Streams types
     print_type_format("PipeToOptions", description="Flow streams type"),
     print_type_format("QueuingStrategy", description="Flow streams type"),
-    print_type_format("ReadableByteStreamController", description="Flow streams type"),
+    print_type_format(
+        "ReadableByteStreamController", description="Flow streams type"
+    ),
     print_type_format("ReadableStream", description="Flow streams type"),
-    print_type_format("ReadableStreamBYOBRequest", description="Flow streams type"),
-    print_type_format("ReadableStreamController", description="Flow streams type"),
+    print_type_format(
+        "ReadableStreamBYOBRequest", description="Flow streams type"
+    ),
+    print_type_format(
+        "ReadableStreamController", description="Flow streams type"
+    ),
     print_type_format("ReadableStreamReader", description="Flow streams type"),
     print_type_format("TextEncodeOptions", description="Flow streams type"),
     print_type_format("TextEncoder", description="Flow streams type"),
@@ -709,6 +869,8 @@ builtintypes = [
     print_type_format("UnderlyingSink", description="Flow streams type"),
     print_type_format("UnderlyingSource", description="Flow streams type"),
     print_type_format("WritableStream", description="Flow streams type"),
-    print_type_format("WritableStreamController", description="Flow streams type"),
+    print_type_format(
+        "WritableStreamController", description="Flow streams type"
+    ),
     print_type_format("WritableStreamWriter", description="Flow streams type"),
 ]

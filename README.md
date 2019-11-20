@@ -7,6 +7,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/jofwwwr30ub7f8r2/branch/master?svg=true)](https://ci.appveyor.com/project/Pegase745/sublime-flowtype)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9433d6745ed54193bb6d2204ee7c6172)](https://www.codacy.com/app/Pegase745/sublime-flowtype?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Pegase745/sublime-flowtype&amp;utm_campaign=Badge_Grade)
 [![Package Control](https://img.shields.io/packagecontrol/dt/FlowType.svg)](https://packagecontrol.io/packages/FlowType)
+[![black](https://img.shields.io/badge/code%20style-black-000000.svg)]()
 
 <!-- [![codecov](https://codecov.io/gh/Pegase745/sublime-flowtype/branch/master/graph/badge.svg)](https://codecov.io/gh/Pegase745/sublime-flowtype) -->
 <!-- [![Code Climate](http://img.shields.io/codeclimate/github/Pegase745/sublime-flowtype.svg)](https://codeclimate.com/github/Pegase745/sublime-flowtype) -->

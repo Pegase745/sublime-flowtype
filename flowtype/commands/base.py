@@ -48,7 +48,9 @@ class BaseCommand(sublime_plugin.TextCommand):
         )
 
         if thread.is_alive():
-            return sublime.set_timeout(lambda: self.check_thread(thread, i, dir), 100)
+            return sublime.set_timeout(
+                lambda: self.check_thread(thread, i, dir), 100
+            )
 
         self.view.erase_status("flow_loader")
         self.handle_process(thread.returncode, thread.stdout, thread.stderr)

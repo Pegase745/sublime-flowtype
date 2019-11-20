@@ -1,13 +1,15 @@
-import re
-import os
 import json
-import time
+import os
+import re
 import subprocess
+import time
 from collections import namedtuple
 
 import sublime
 
-Arguments = namedtuple("Arguments", ["file_name", "cursor_position", "row", "col"])
+Arguments = namedtuple(
+    "Arguments", ["file_name", "cursor_position", "row", "col"]
+)
 
 FLOWTYPE = {
     "LAST_ERROR_CHECK": time.time(),
@@ -34,7 +36,11 @@ def is_js_source(view):
     except AttributeError as e:
         file_extension = ""
 
-    return "source.js" in scope_name or file_extension in (".js", ".jsx", ".flow")
+    return "source.js" in scope_name or file_extension in (
+        ".js",
+        ".jsx",
+        ".flow",
+    )
 
 
 def get_settings(setting, default=None):
@@ -62,7 +68,9 @@ def run_flow(command, contents):
     os.close(write)
 
     try:
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, stdin=read)
+        output = subprocess.check_output(
+            command, stderr=subprocess.STDOUT, stdin=read
+        )
 
         decoded_output = output.decode("utf-8")
 
@@ -91,7 +99,9 @@ def find_in_parent_folders(file_name, current_dir):
             break
         else:
             if current_dir == parent_dir:
-                raise ValueError("No %s was found in any parent folder" % file_name)
+                raise ValueError(
+                    "No %s was found in any parent folder" % file_name
+                )
             else:
                 current_dir = parent_dir
 

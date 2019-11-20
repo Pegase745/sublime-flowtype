@@ -89,7 +89,9 @@ class FlowtypeViewType(BaseCommand):
 
             formattedString = tempRes
             self.view.show_popup(
-                """<html><body><p>""" + formattedString + """</p></body></html>""",
+                """<html><body><p>"""
+                + formattedString
+                + """</p></body></html>""",
                 max_width=800,
                 max_height=2400,
             )

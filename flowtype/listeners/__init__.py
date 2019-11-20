@@ -25,8 +25,14 @@ class FlowTypeListener(sublime_plugin.EventListener):
                 logger.logger.debug("Running autocompletion")
 
                 trigger_start = loc - len(prefix)
-                line = sublime.Region(view.line(trigger_start).begin(), trigger_start)
-                if view.substr(line).strip().endswith((":", ".", "(", "{", "[", ",")):
+                line = sublime.Region(
+                    view.line(trigger_start).begin(), trigger_start
+                )
+                if (
+                    view.substr(line)
+                    .strip()
+                    .endswith((":", ".", "(", "{", "[", ","))
+                ):
                     if get_settings("complete_with_builtintypes", True):
                         # TODO: only built-in starting with prefix
                         return FLOW_SUGGESTIONS + builtintypes

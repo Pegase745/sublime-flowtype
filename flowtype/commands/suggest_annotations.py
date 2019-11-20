@@ -20,7 +20,14 @@ class FlowtypeSuggestAnnotations(BaseCommand):
 
         arguments = prepare_arguments(self.view)
 
-        cmd = [flow_bin, "suggest", "--from", "nuclide", "--quiet", arguments.file_name]
+        cmd = [
+            flow_bin,
+            "suggest",
+            "--from",
+            "nuclide",
+            "--quiet",
+            arguments.file_name,
+        ]
 
         return cmd
 

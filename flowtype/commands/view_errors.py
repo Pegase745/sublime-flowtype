@@ -52,7 +52,9 @@ class FlowtypeViewErrors(BaseCommand):
         # No errors
         if passed:
             self.view.erase_status("flow_errors")
-            self.view.set_status("flow_type", "Flow %s: no errors" % flow_version)
+            self.view.set_status(
+                "flow_type", "Flow %s: no errors" % flow_version
+            )
             return
 
         # Errors
@@ -82,7 +84,9 @@ class FlowtypeViewErrors(BaseCommand):
             for message in messages:
                 legend.append(message["descr"])
 
-            full_description.append("{} {}".format(row + 1, operation["context"]))
+            full_description.append(
+                "{} {}".format(row + 1, operation["context"])
+            )
             full_description.append(" ".join(legend))
 
             panel_errors.append(full_description)
@@ -90,7 +94,11 @@ class FlowtypeViewErrors(BaseCommand):
             error_per_line[row + 1] = " ".join(legend)
 
         self.view.add_regions(
-            "flow_type_highlights", regions, "string", "dot", sublime.DRAW_NO_FILL
+            "flow_type_highlights",
+            regions,
+            "string",
+            "dot",
+            sublime.DRAW_NO_FILL,
         )
 
         cursor_position = self.view.sel()[0].begin()
@@ -114,7 +122,9 @@ class FlowtypeViewErrors(BaseCommand):
         self.selection = list(self.view.sel())
 
         self.active_window.show_quick_panel(
-            panel_errors, on_select=self.select_error, on_highlight=self.select_error
+            panel_errors,
+            on_select=self.select_error,
+            on_highlight=self.select_error,
         )
 
     def select_error(self, index):
