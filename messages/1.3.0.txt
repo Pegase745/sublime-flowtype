@@ -1,0 +1,8 @@
+FlowType 1.3.0
+==============
+
+## Added
+  * Enables plugin on all js files if `all` option is enabled in `.flowconfig`.
+    See https://flow.org/en/docs/config/options/#toc-all-boolean
+
+    You might need to restart SublimeText when you change an option in `.flowconfig`.
