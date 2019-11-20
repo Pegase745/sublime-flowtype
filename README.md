@@ -5,10 +5,11 @@
 [![GitHub (pre-)release](https://img.shields.io/github/release/Pegase745/sublime-flowtype/all.svg)](https://github.com/Pegase745/sublime-flowtype/releases)
 [![Build Status](https://travis-ci.org/Pegase745/sublime-flowtype.svg?branch=master)](https://travis-ci.org/Pegase745/sublime-flowtype)
 [![Build status](https://ci.appveyor.com/api/projects/status/jofwwwr30ub7f8r2/branch/master?svg=true)](https://ci.appveyor.com/project/Pegase745/sublime-flowtype)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9433d6745ed54193bb6d2204ee7c6172)](https://www.codacy.com/app/Pegase745/sublime-flowtype?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Pegase745/sublime-flowtype&amp;utm_campaign=Badge_Grade)
 [![Package Control](https://img.shields.io/packagecontrol/dt/FlowType.svg)](https://packagecontrol.io/packages/FlowType)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)]()
 
+
+<!-- [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9433d6745ed54193bb6d2204ee7c6172)](https://www.codacy.com/app/Pegase745/sublime-flowtype?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Pegase745/sublime-flowtype&amp;utm_campaign=Badge_Grade) -->
 <!-- [![codecov](https://codecov.io/gh/Pegase745/sublime-flowtype/branch/master/graph/badge.svg)](https://codecov.io/gh/Pegase745/sublime-flowtype) -->
 <!-- [![Code Climate](http://img.shields.io/codeclimate/github/Pegase745/sublime-flowtype.svg)](https://codeclimate.com/github/Pegase745/sublime-flowtype) -->
 
