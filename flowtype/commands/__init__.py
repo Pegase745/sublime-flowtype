@@ -8,12 +8,12 @@ from .goto_definition import FlowtypeGotoDefinition
 from .suggest_annotations import FlowtypeSuggestAnnotations
 
 __all__ = [
-    'FlowtypeViewType',
-    'FlowtypeCoverage',
-    'FlowtypeAddPragma',
-    'FlowtypeViewErrors',
-    'FlowtypeAutocomplete',
-    'FlowtypeCheckContents',
-    'FlowtypeGotoDefinition',
-    'FlowtypeSuggestAnnotations',
+    "FlowtypeViewType",
+    "FlowtypeCoverage",
+    "FlowtypeAddPragma",
+    "FlowtypeViewErrors",
+    "FlowtypeAutocomplete",
+    "FlowtypeCheckContents",
+    "FlowtypeGotoDefinition",
+    "FlowtypeSuggestAnnotations",
 ]

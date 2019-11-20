@@ -13,7 +13,7 @@ class TestOnQueryCompletions(TestCase):
         self.setText(string)
 
         listener = FlowTypeListener()
-        actual = listener.on_query_completions(self.view, 's', [7])
+        actual = listener.on_query_completions(self.view, "s", [7])
 
         self.assertEqual(actual, None)
 
@@ -25,6 +25,6 @@ class TestOnQueryCompletions(TestCase):
         self.setText(string)
 
         listener = FlowTypeListener()
-        actual = listener.on_query_completions(self.view, 's', [7])
+        actual = listener.on_query_completions(self.view, "s", [7])
 
         self.assertEqual(actual, builtintypes)

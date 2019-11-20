@@ -15,41 +15,44 @@ class FlowtypeViewErrors(BaseCommand):
         """Construct cli command."""
         try:
             flow_bin = self.get_flow_bin()
-            logger.logger.debug('using flow-bin %s' % flow_bin)
+            logger.logger.debug("using flow-bin %s" % flow_bin)
         except ValueError as e:
-            logger.logger.error('check_contents %s' % e)
+            logger.logger.error("check_contents %s" % e)
             return
 
         arguments = prepare_arguments(self.view)
 
         cmd = [
-            flow_bin, 'check-contents',
-            '--from', 'nuclide',
-            '--quiet', '--json', arguments.file_name
+            flow_bin,
+            "check-contents",
+            "--from",
+            "nuclide",
+            "--quiet",
+            "--json",
+            arguments.file_name,
         ]
 
         return cmd
 
     def handle_process(self, returncode, stdout, error):
         """Handle the output from the threaded process."""
-        self.view.erase_regions('flow_type_highlights')
+        self.view.erase_regions("flow_type_highlights")
 
         if type(error) is bytes:
-            error = error.decode('utf-8')
+            error = error.decode("utf-8")
 
         if returncode != 0:
-            logger.logger.error('check_contents %s' % error)
+            logger.logger.error("check_contents %s" % error)
             return
 
-        passed = stdout.get('passed', False)
-        errors = stdout.get('errors', [])
-        flow_version = stdout.get('flowVersion', '')
+        passed = stdout.get("passed", False)
+        errors = stdout.get("errors", [])
+        flow_version = stdout.get("flowVersion", "")
 
         # No errors
         if passed:
-            self.view.erase_status('flow_errors')
-            self.view.set_status(
-                'flow_type', 'Flow %s: no errors' % flow_version)
+            self.view.erase_status("flow_errors")
+            self.view.set_status("flow_type", "Flow %s: no errors" % flow_version)
             return
 
         # Errors
@@ -60,13 +63,13 @@ class FlowtypeViewErrors(BaseCommand):
         for error in errors:
             legend = []
             full_description = []
-            messages = error.get('message', [])
+            messages = error.get("message", [])
             operation = messages[0]
 
             if operation:
-                row = int(operation['line']) - 1
-                col = int(operation['start']) - 1
-                endcol = int(operation['end'])
+                row = int(operation["line"]) - 1
+                col = int(operation["start"]) - 1
+                endcol = int(operation["end"])
 
                 start = self.view.text_point(row, col)
                 stop = self.view.text_point(row, endcol)
@@ -77,42 +80,41 @@ class FlowtypeViewErrors(BaseCommand):
                 regions.append(sublime.Region(start, stop))
 
             for message in messages:
-                legend.append(message['descr'])
+                legend.append(message["descr"])
 
-            full_description.append('{} {}'.format(
-                row + 1, operation['context']))
-            full_description.append(' '.join(legend))
+            full_description.append("{} {}".format(row + 1, operation["context"]))
+            full_description.append(" ".join(legend))
 
             panel_errors.append(full_description)
 
-            error_per_line[row + 1] = ' '.join(legend)
+            error_per_line[row + 1] = " ".join(legend)
 
         self.view.add_regions(
-            'flow_type_highlights',
-            regions, 'string', 'dot',
-            sublime.DRAW_NO_FILL
+            "flow_type_highlights", regions, "string", "dot", sublime.DRAW_NO_FILL
         )
 
         cursor_position = self.view.sel()[0].begin()
         row, col = self.view.rowcol(cursor_position)
-        error_description = error_per_line.get(row + 1, '')
+        error_description = error_per_line.get(row + 1, "")
 
-        self.view.erase_status('flow_errors')
+        self.view.erase_status("flow_errors")
         if error_description:
             self.view.set_status(
-                'flow_type', 'Flow error: {}'.format(error_description))
+                "flow_type", "Flow error: {}".format(error_description)
+            )
         else:
             self.view.set_status(
-                'flow_errors', 'Flow {}: {} error{}'.format(
-                    flow_version, len(errors), 's' if len(errors) > 1 else ''))
+                "flow_errors",
+                "Flow {}: {} error{}".format(
+                    flow_version, len(errors), "s" if len(errors) > 1 else ""
+                ),
+            )
 
         self.viewport_pos = self.view.viewport_position()
         self.selection = list(self.view.sel())
 
         self.active_window.show_quick_panel(
-            panel_errors,
-            on_select=self.select_error,
-            on_highlight=self.select_error
+            panel_errors, on_select=self.select_error, on_highlight=self.select_error
         )
 
     def select_error(self, index):
@@ -135,11 +137,8 @@ class FlowtypeViewErrors(BaseCommand):
 
     def run(self, view):
         """Execute `check_contents` command."""
-        logger.logger.debug('Running check_contents')
+        logger.logger.debug("Running check_contents")
 
-        thread = ExecFlowCommand(
-            self.get_cmd(),
-            self.get_content()
-        )
+        thread = ExecFlowCommand(self.get_cmd(), self.get_content())
         thread.start()
         self.check_thread(thread)

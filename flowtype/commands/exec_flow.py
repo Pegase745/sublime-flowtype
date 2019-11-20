@@ -31,13 +31,13 @@ class ExecFlowCommand(threading.Thread):
         try:
             output = subprocess.check_output(
                 self.cmd,
-                shell=sublime.platform() == 'windows',
+                shell=sublime.platform() == "windows",
                 stdin=read,
-                stderr=subprocess.STDOUT
+                stderr=subprocess.STDOUT,
             )
 
             if type(output) is bytes:
-                output = output.decode('utf-8')
+                output = output.decode("utf-8")
 
             try:
                 self.stdout = json.loads(output)
@@ -47,8 +47,8 @@ class ExecFlowCommand(threading.Thread):
             os.close(read)
         except subprocess.CalledProcessError as err:
             if type(err.output) is bytes:
-                output = err.output.decode('utf-8')
+                output = err.output.decode("utf-8")
             else:
                 output = err.output
-            self.stderr = str(err) + ': ' + str(output)
+            self.stderr = str(err) + ": " + str(output)
             self.returncode = 1
