@@ -1,0 +1,5 @@
+FlowType 1.3.1
+==============
+
+## Fixed
+  * Check for `.flowconfig` only if JS source.
